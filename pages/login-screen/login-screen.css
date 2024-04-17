@@ -1,0 +1,53 @@
+iconify-icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.main-container {
+  height: 60vh;
+}
+
+.main {
+  background-color: #fff;
+  width: 1078px !important;
+  height: 458px !important;
+  border-radius: 20px;
+  box-shadow: 0px 0px 20px #d6d2d2;
+}
+
+.btn-primary {
+  width: 100%;
+  background-color: #3465e1;
+}
+
+footer {
+  background-color: #262627;
+  height: 40vh;
+}
+
+div.motto p {
+  color: #e8e8e8;
+}
+
+.ourbook {
+  color: #fff;
+}
+
+div.info {
+  color: #d1d1d1;
+}
+
+.copyright {
+  color: #868585;
+}
