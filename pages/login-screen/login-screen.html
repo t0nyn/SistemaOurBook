@@ -11,69 +11,84 @@
       integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
       crossorigin="anonymous"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
     <script src="https://unpkg.com/feather-icons"></script>
   </head>
   <body>
-    <div class="container-fluid">
-      <main
-        class="main-container row align-items-center justify-content-center"
-      >
-        <div class="main row align-items-center justify-content-center">
-          <div class="img-createacc col-md-6">
-            <img
-              src="/pages/login-screen/Logo-transparente.png"
-              alt="logo"
-              width="160"
-              height="120"
-            />
-            <div class="create-acc">
-              <p>
-                <b>Entrar na conta</b><br />Não tem uma conta?
-                <a href="#">Criar conta</a>
-              </p>
+    <main>
+      <div class="container">
+        <div class="row">
+          <div class="col-10 offset-1">
+            <div class="main">
+              <div class="row justify-content-around">
+                <div class="col-12 col-md-5 offset-1">
+                  <img
+                    src="/pages/Logo-transparente.png"
+                    alt="logo"
+                    width="160"
+                    height="120"
+                  />
+                  <div class="create-acc">
+                    <p>
+                      <b>Entrar na conta</b><br />Não tem uma conta?
+                      <a href="#">Criar conta</a>
+                    </p>
+                  </div>
+                </div>
+                <div class="col-12 col-md-4">
+                  <form>
+                    <div class="mb-3">
+                      <label for="exampleInputEmail1" class="form-label"
+                        >Usuário</label
+                      >
+                      <input
+                        type="email"
+                        class="form-control"
+                        placeholder="Digite seu email"
+                        id="exampleInputEmail1"
+                        aria-describedby="emailHelp"
+                        required
+                      />
+                    </div>
+                    <div class="mb-3">
+                      <label for="exampleInputPassword1" class="form-label"
+                        >Senha</label
+                      >
+                      <input
+                        type="password"
+                        class="form-control"
+                        placeholder="Digite sua senha"
+                        id="exampleInputPassword1"
+                        required
+                      />
+                      <a href="#">Esqueceu a senha?</a>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                      Entrar
+                    </button>
+                  </form>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="row login col-md-4">
-            <form>
-              <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label"
-                  >Usuário</label
-                >
-                <input
-                  type="email"
-                  class="form-control"
-                  placeholder="Digite seu email"
-                  id="exampleInputEmail1"
-                  aria-describedby="emailHelp"
-                  required
-                />
-              </div>
-              <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label"
-                  >Senha</label
-                >
-                <input
-                  type="password"
-                  class="form-control"
-                  placeholder="Digite sua senha"
-                  id="exampleInputPassword1"
-                  required
-                />
-                <a href="#">Esqueceu a senha?</a>
-              </div>
-              <button type="submit" class="btn btn-primary">Entrar</button>
-            </form>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <div class="container">
+        <div class="footer-container row">
+          <div class="motto col-10 offset-1">
+            <p>
+              <b class="ourbook">OurBook,</b> <br />Conectando leitores e
+              livros.
+            </p>
           </div>
-        </div>
-      </main>
-      <footer class="row align-items-center">
-        <div class="motto">
-          <p>
-            <b class="ourbook">OurBook,</b> <br />Conectando leitores e livros.
-          </p>
-        </div>
-        <div class="info row">
-          <div class="social-media col">
+          <div class="col-10 col-md-3 offset-1">
             <p>Acompanhe nossas redes sociais</p>
             <div class="social-media-icons">
               <i data-feather="instagram"></i>
@@ -81,7 +96,7 @@
               <i data-feather="facebook"></i>
             </div>
           </div>
-          <div class="help col">
+          <div class="help col-10 col-md-2">
             <p>Ajuda</p>
             <ul>
               <li>Política de Privacidade</li>
@@ -90,7 +105,7 @@
               <li>Suporte</li>
             </ul>
           </div>
-          <div class="address col">
+          <div class="address col-12 col-md-2">
             <p>Endereço</p>
             <ul>
               <li>Cidade Universitária</li>
@@ -98,17 +113,24 @@
               <li>CEP 79070-900</li>
             </ul>
           </div>
-          <div class="schedule col">
+          <div class="schedule col-12 col-md-2">
             <p>Horários</p>
             <ul>
               <li>Segunda à Sexta-feira</li>
               <li>06h-22h</li>
             </ul>
           </div>
+          <div class="col-10 offset-1">
+            <hr class="line" />
+          </div>
+          <div class="col-10 offset-1">
+            <div class="copyright">
+              © 2024 OurBook. Todos direitos reservados
+            </div>
+          </div>
         </div>
-        <div class="copyright">© 2024 OurBook. Todos direitos reservados</div>
-      </footer>
-    </div>
+      </div>
+    </footer>
 
     <script>
       feather.replace();
