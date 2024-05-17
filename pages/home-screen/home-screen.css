@@ -29,14 +29,15 @@ header{
   display: flex;
   align-items: center;
   padding: 1rem;
-  width: 100%;
+  justify-content: space-between;
   -webkit-box-shadow: 0px 2px 15px -5px rgba(0,0,0,0.18);
   -moz-box-shadow: 0px 2px 15px -5px rgba(0,0,0,0.18);
   box-shadow: 0px 2px 15px -5px rgba(0,0,0,0.18);
 } 
 
 .header-logo{
-  width: 20%;
+  display: flex;
+  width: 22%;
 }
 
 .header-logo--img{
@@ -45,22 +46,81 @@ header{
 }
 
 nav{
-  width: 80%;
   display: flex;
-  
-  justify-content: end;
+  width: 75%;
   background-color: #fff;
+ 
 }
 
 .header-menu{
   display: flex;
   flex-direction: row;
-  align-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.header-menu-list{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  padding-right: 2rem;
+}
+
+ul{
+  display: flex;
+  width: 100%;
 }
 
 li{
   list-style: none;
-  padding-left: 2rem;
+  padding-left: 1rem;
+}
+
+.nav-item-active{
+  text-decoration: none;
+  pointer-events: none;
+  font-weight: 500;
+  font-size: 1.05rem;
+  font-family: "Questrial", sans-serif;
+  color: #3465E1;
+}
+
+.nav-item-inactive{
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.05rem;
+  font-family: "Questrial", sans-serif;
+  color: #000;
+}
+
+.button-login{
+  background-color: #3465E1;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 5px;
+}
+
+.button-logon{
+  background-color: #FFF;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  color: #000;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  border-radius: 5px;
+  border-width: 0.12rem;
+  border-color: #000;
 }
 
 /* FOOTER */
