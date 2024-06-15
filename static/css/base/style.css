@@ -1,9 +1,4 @@
-/* iconify-icon {
-  display: inline-block;
-  width: 1em;
-  height: 1em;
-}
- */
+
 
 * {
   padding: 0;
@@ -52,7 +47,7 @@ main {
   font-weight: 700;
 }
 
-.form-label {
+form label{
   color: #262626;
 }
 
