@@ -208,7 +208,7 @@ li {
     margin-right: 1rem;
 }
 
-.exemplar-atributos{
+.exemplar-atributos {
     width: 50%;
     display: flex;
     flex-direction: column;
@@ -252,9 +252,10 @@ li {
 
 .exemplar-disponibilidade {
     font-weight: 500;
-    font-size: 0.9rem;
+    font-size: 16px;
     font-family: "Poppins", sans-serif;
     color: #3465E1;
+    padding-top: 1.5rem;
 }
 
 .botao-adicionar-lista {
@@ -282,7 +283,7 @@ li {
     font-size: 30px;
 }
 
-.descricao-titulo{
+.descricao-titulo {
     font-weight: 600;
     font-size: 1.1rem;
     font-family: "Poppins", sans-serif;
@@ -290,7 +291,7 @@ li {
 }
 
 
-.descricao-texto{
+.descricao-texto {
     text-align: justify;
     font-weight: 400;
     font-size: 1rem;
@@ -300,13 +301,13 @@ li {
 
 /* LIVROS SIMILARES */
 
-.conteudo-similares{
+.conteudo-similares {
     display: flex;
     flex-direction: column;
     width: 80%;
 }
 
-.similares-texto{
+.similares-texto {
     font-weight: 500;
     font-size: 1.4rem;
     font-family: "Poppins", sans-serif;
@@ -319,9 +320,9 @@ li {
     margin-top: 1rem;
     margin-bottom: 1rem;
     justify-content: space-between;
-  }
-  
-  .exemplar {
+}
+
+.exemplar {
     display: flex;
     flex-direction: column;
     border-radius: 20px;
@@ -329,40 +330,40 @@ li {
     padding-top: 0.5rem;
     background-color: #FFF;
     align-items: center;
-  }
-  
-  .exemplar-similar-img {
+}
+
+.exemplar-similar-img {
     width: 200px;
     border-radius: 10px;
-  }
-  
-  .exemplar-info {
+}
+
+.exemplar-info {
     margin-top: 0.5rem;
     padding: 1rem;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-  }
-  
-  .exemplar-titulo {
+}
+
+.exemplar-titulo {
     font-family: "Poppins", sans-serif;
     font-weight: 500;
     font-size: 15px;
-  }
-  
-  .exemplar-autor {
+}
+
+.exemplar-autor {
     font-family: "Poppins", sans-serif;
     font-weight: 400;
     font-size: 14px;
-  }
-  
-  .exemplar-disponibilidade {
+}
+
+.exemplar-similar-disponibilidade {
     margin-top: 1rem;
     font-family: "Poppins", sans-serif;
     font-weight: 400;
     font-size: 14px;
     color: #3465E1;
-  }
+}
 
 /* FOOTER */
 
