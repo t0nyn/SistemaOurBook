@@ -176,6 +176,7 @@ main {
 
 .tabela-texto {
     font-size: 0.9rem;
+    padding: 0.7rem 0rem 0.7rem 1.5rem !important;
     font-weight: 400;
     font-family: "Poppins", sans-serif;
 }
