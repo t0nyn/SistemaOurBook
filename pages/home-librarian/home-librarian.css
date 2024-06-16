@@ -1,0 +1,131 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	font-family: "Poppins", sans-serif;
+}
+
+html,
+body {
+	width: 100%;
+	height: 100%;
+}
+
+body {
+	display: flex;
+	flex-direction: row;
+	background-color: #fafafa !important;
+}
+
+main {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+
+#sidebar {
+	z-index: 1;
+	width: 280px;
+	height: 100%;
+	-webkit-box-shadow: 0px 0px 13px -5px rgba(0, 0, 0, 0.25);
+	-moz-box-shadow: 0px 0px 13px -5px rgba(0, 0, 0, 0.25);
+	box-shadow: 0px 0px 13px -5px rgba(0, 0, 0, 0.25);
+}
+
+#sidebar-logo {
+	width: 100px;
+}
+
+#menu-superior {
+	width: 100%;
+	height: 100px;
+	border-color: #0000001a;
+	border-width: 0px 0px 1px 0px;
+	background-color: #fff !important;
+	border-style: solid;
+}
+
+.button-account {
+	width: 180px;
+	background-color: #fff !important;
+	padding-top: 9px;
+	padding-bottom: 9px;
+	padding-left: 20px;
+	padding-right: 20px;
+	color: #000 !important;
+	font-size: 0.9rem !important;
+	font-weight: 400;
+	font-family: "Poppins", sans-serif !important;
+	border-radius: 20px !important;
+	border-color: #cccccc !important;
+	border-width: 0.12rem !important;
+}
+
+.chevron-icon {
+	font-size: 19px;
+	padding-left: 0.5rem;
+}
+
+.dropdown-menu {
+	width: 100%;
+	border-radius: 15px !important;
+	padding: 0 !important;
+	-webkit-box-shadow: 2px 3px 10px -2px rgba(0, 0, 0, 0.3);
+	-moz-box-shadow: 2px 3px 10px -2px rgba(0, 0, 0, 0.3);
+	box-shadow: 2px 3px 10px -2px rgba(0, 0, 0, 0.3);
+}
+
+.dropdown-item {
+	display: flex !important;
+	align-items: center !important;
+	border-radius: 15px !important;
+	gap: 0.5rem;
+	padding-left: 1rem !important;
+}
+
+.account-icon {
+	font-size: 22px;
+}
+
+.sidebar-collapse-text {
+	font-weight: 500;
+}
+
+.collapsed-item-text {
+	font-size: 0.9rem;
+}
+
+.bg-collapsed-show {
+	background-color: #f2f2f2;
+}
+
+.bg-white,
+.bg-collapsed-show {
+	-webkit-transition: background-color 150ms linear;
+	-ms-transition: background-color 150ms linear;
+	transition: background-color 150ms linear;
+}
+
+.collapse-chevron {
+	-webkit-transition: transform 150ms linear;
+	-ms-transition: transform 150ms linear;
+	transition: transform 150ms linear;
+}
+
+.rotate-180 {
+	-webkit-transform: rotate(-180deg);
+	transform: rotate(-180deg);
+}
+
+.terms-links {
+	color: #585858;
+}
+
+.rights-text {
+	color: #868585;
+}
+
+.terms-links,
+.rights-text {
+	font-size: 0.8rem;
+}
