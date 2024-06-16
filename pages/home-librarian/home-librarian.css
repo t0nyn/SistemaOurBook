@@ -171,26 +171,6 @@ main {
 	font-family: "Poppins", sans-serif;
 }
 
-/* CONTEUDO FORA DA TABELA */
-
-.conteudo {
-	padding: 4rem;
-}
-
-.texto-resultados {
-	font-size: 1rem;
-	font-weight: 500;
-	font-family: "Poppins", sans-serif;
-	padding-bottom: 2.5rem;
-}
-
-.span-texto-resultados {
-	padding-left: 0.6rem;
-	font-size: 1rem;
-	font-weight: 700;
-	font-family: "Poppins", sans-serif;
-}
-
 /* TABELA RESULTADOS DE PESQUISA */
 
 .tabela {
