@@ -159,7 +159,7 @@ li {
   align-items: center !important;
   border-radius: 15px 15px 0px 0px !important;
   gap: 0.5rem;
-  padding-left: 1rem !important;
+  padding-top: 0.5rem !important;
 }
 
 .dropdown-item--ultimo{
@@ -167,8 +167,8 @@ li {
   align-items: center !important;
   border-radius: 0px 0px 15px 15px !important;
   gap: 0.5rem;
-  padding-left: 1rem !important;
   text-decoration: none;
+  padding-bottom: 0.5rem !important;
 }
 
 .account-icon{
