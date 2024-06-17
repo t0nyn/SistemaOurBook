@@ -1,0 +1,65 @@
+{% load icon %}
+<div class="menu-navegacao">
+    <a class="menu-logo">
+      <img src="../img/Logo-transparente.png" class="menu-logo--img" />
+    </a>
+    <nav>
+      <ul class="menu-nav mb-0">
+        <div class="menu-nav-list">
+          <li>
+            <a class="nav-item-active" href="#">Início</a>
+          </li>
+          <li>
+            <a class="nav-item-inactive" href="#">Categorias</a>
+          </li>
+          <li>
+            <a class="nav-item-inactive" href="#">Recentes</a>
+          </li>
+          <li>
+            <a class="nav-item-inactive" href="#">Acervo Geral</a>
+          </li>
+          <li>
+            <a class="nav-item-inactive" href="#">Empréstimo</a>
+          </li>
+          <a href="#" class="nav-item-inactive">
+            <ion-icon name="search" class="search-icon"></ion-icon>
+          </a>
+        </div>
+
+        <li class="container-dropdown">
+          <div class="dropdown">
+            <button class="btn btn-secondary button-account" type="button" id="dropdownMenuButton"
+              data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {{username}}
+              {% icon 'chevron-down' %}
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item dropdown-item--primeiro" href="#">
+                <ion-icon name="star-outline" class="account-icon"></ion-icon>
+                Minha lista
+              </a>
+              <a class="dropdown-item" href="#">
+                <ion-icon name="book-outline" class="account-icon"></ion-icon>
+                Meus empréstimos
+              </a>
+              <a class="dropdown-item" href="#">
+                <ion-icon name="calendar-outline" class="account-icon"></ion-icon>
+                Reservas
+              </a>
+              <a class="dropdown-item" href="#">
+                <ion-icon name="settings-outline" class="account-icon"></ion-icon>
+                Configurações
+              </a>
+              <a class="dropdown-item dropdown-item--ultimo" href="#">
+                <ion-icon name="log-out-outline" class="account-icon"></ion-icon>
+                Sair da conta
+              </a>
+            </div>
+          </div>
+
+        </li>
+
+      </ul>
+
+    </nav>
+  </div>

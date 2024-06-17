@@ -5,7 +5,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as login_user
 from django.contrib.auth.decorators import login_required
-from book.models import Book
+from book.models import Book, Category
 from django.contrib.auth.models import User
 
 
@@ -13,11 +13,21 @@ from django.contrib.auth.models import User
 @login_required
 def home(request):
     books = Book.objects.all()[:8]
-    context = {"books": books, "username": request.user}
+    categories = Category.objects.all()
+    context = {
+        "books": books, 
+        "username": request.user, 
+        "categories" : categories
+    }
     return render(request, "home/home.html", context=context)
 
 
 def book_page(request, id):
     book = Book.objects.get(id=id)
-    context = {"book": book, "username": request.user}
+    same_category_books = Book.objects.exclude(id=id).filter(category=book.category)
+    context = {
+        "book": book, 
+        "username": request.user,
+        "same_category_books" : same_category_books    
+    }
     return render(request, "book/book.html", context=context)

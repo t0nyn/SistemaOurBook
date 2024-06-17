@@ -1,88 +1,82 @@
-{% extends "base-user/index.html" %} 
+{% extends "base/index.html" %} 
 {% load static %} 
-{% block title %} Home {% endblock %} 
+{% block title %}Home{% endblock %} 
 {% block css %}
 <link rel="stylesheet" href="{% static 'css/home/style.css' %}" />
 {% endblock %}
+
 {% block content %}
-
-  <header>
-    <h1 class="header-titulo">Explore um mundo de livros<br>ao seu alcance</h1>
-    <h2 class="header-subtitulo">Encontre seu livro, reserve e empreste com facilidade.</h2>
-    <button class="header-button">
-      Visualizar o acervo completo
-    </button>
-  </header>
-
-  <main>
-
-    <div class="conteudo-destaque">
-      <h3 class="destaque-titulo">Categorias</h3>
-      <h4 class="destaque-subtitulo">Navegue por um mundo de opções, separadas por diversas categorias.</h4>
-
-      <div>
-
-        <div class="container-categorias">
-
-          <a class="botao-categoria">Artigo</a>
-          <a class="botao-categoria">Enciclopédia</a>
-          <a class="botao-categoria">Jurídico</a>
-          <a class="botao-categoria">Reportagem</a>
-          <a class="botao-categoria">Ficção</a>
-
-        </div>
-
-        <div class="container-categorias">
-
-          <a class="botao-categoria">Religioso</a>
-          <a class="botao-categoria">Romance</a>
-          <a class="botao-categoria">Conto</a>
-          <a class="botao-categoria">HQ</a>
-          <a class="botao-categoria">Infantil</a>
-
-        </div>
-
-      </div>
-
-    </div>
-
-    <div class="conteudo-destaque">
-      <h3 class="destaque-titulo">Recentes</h3>
-      <h4 class="destaque-subtitulo">Mantenha-se atualizado com os últimos lançamentos de livros.</h4>
-
-      <div class="container-recentes">
-        <div class="row">
-          {% for book in books %}
-          <div class="exemplar col-3">
-            <a href="{% url 'book_page' id=book.id %}">
-              <img src="{{ book.cover.url }}" class="exemplar-img">
-            </a>
-            <div class="exemplar-info">
-              <h2 class="exemplar-titulo">{{ book.name }}</h2>
-              <h3 class="exemplar-autor">{{ book.author }}</h3>
-              <h4 class="exemplar-disponibilidade">4 exemplares disponíveis</h4>
-            </div>
+  {% include 'components/navbar.html' %}
+  <div class="container">
+    <header>
+      <h1 class="header-titulo">Explore um mundo de livros<br>ao seu alcance</h1>
+      <h2 class="header-subtitulo">Encontre seu livro, reserve e empreste com facilidade.</h2>
+      <button class="header-button">
+        Visualizar o acervo completo
+      </button>
+    </header>
+  
+    <main>
+      <div class="conteudo-destaque">
+        <h3 class="destaque-titulo">Categorias</h3>
+        <h4 class="destaque-subtitulo">Navegue por um mundo de opções, separadas por diversas categorias.</h4>
+  
+        <div>
+  
+          <div class="container-categorias">
+  
+            <a class="botao-categoria">Artigo</a>
+            <a class="botao-categoria">Enciclopédia</a>
+            <a class="botao-categoria">Jurídico</a>
+            <a class="botao-categoria">Reportagem</a>
+            <a class="botao-categoria">Ficção</a>
+  
           </div>
-          {% endfor %}
+  
+          <div class="container-categorias">
+  
+            <a class="botao-categoria">Religioso</a>
+            <a class="botao-categoria">Romance</a>
+            <a class="botao-categoria">Conto</a>
+            <a class="botao-categoria">HQ</a>
+            <a class="botao-categoria">Infantil</a>
+  
+          </div>
+  
+        </div>
+  
+      </div>
+  
+      <div class="conteudo-destaque">
+        <h3 class="destaque-titulo">Recentes</h3>
+        <h4 class="destaque-subtitulo">Mantenha-se atualizado com os últimos lançamentos de livros.</h4>
+  
+        <div class="container-recentes">
+          <div class="row">
+            {% for book in books %}
+              {% include 'components/linux.html' %}
+            {% endfor %}
+          </div>
         </div>
       </div>
-    </div>
-
-    <div class="container-newsletter">
-
-      <img src="../img/newsletter-img.png" class="newsletter-img">
-
-      <div class="conteudo-newsletter">
-        <h1 class="newsletter-titulo">Fique por dentro das novidades</h1>
-        <h2 class="newsletter-subtitulo">Inscreva-se em nossa newsletter.</h2>
-
-        <form class="newsletter-form">
-          <input type="email" placeholder="Digite seu email aqui" class="campo-email">
-          <input type="submit" value="Inscrever-me" class="botao-enviar">
-        </form>
+  
+      <div class="container-newsletter">
+  
+        <img src="../img/newsletter-img.png" class="newsletter-img">
+  
+        <div class="conteudo-newsletter">
+          <h1 class="newsletter-titulo">Fique por dentro das novidades</h1>
+          <h2 class="newsletter-subtitulo">Inscreva-se em nossa newsletter.</h2>
+  
+          <form class="newsletter-form">
+            <input type="email" placeholder="Digite seu email aqui" class="campo-email">
+            <input type="submit" value="Inscrever-me" class="botao-enviar">
+          </form>
+        </div>
+  
       </div>
+  
+    </main>
+  </div>
 
-    </div>
-
-  </main>
-  {% endblock %}
+{% endblock %}

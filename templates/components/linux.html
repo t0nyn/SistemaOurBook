@@ -1,0 +1,10 @@
+<div class="exemplar col-3">
+    <a href="{% url 'book_page' id=book.id %}">
+      <img src="{{ book.cover.url }}" class="exemplar-img">
+    </a>
+    <div class="exemplar-info">
+      <h2 class="exemplar-titulo">{{ book.name }}</h2>
+      <h3 class="exemplar-autor">{{ book.author }}</h3>
+      <h4 class="exemplar-disponibilidade">4 exemplares disponíveis</h4>
+    </div>
+</div>

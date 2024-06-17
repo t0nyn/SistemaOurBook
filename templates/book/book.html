@@ -1,260 +1,97 @@
-{% extends "base-user/index.html" %} 
+{% extends "base/index.html" %} 
 {% load static %} 
+
 {% block title %} {{ book.name }} {% endblock %} 
 {% block css %}
 <link rel="stylesheet" href="{% static 'css/book/style.css' %}" />
 {% endblock %}
 {% block content %}
 
-    <main>
+{% include 'components/navbar.html' %}
 
-        <section class="container-exemplar">
-
+<main>
+    <section class="container-exemplar">
+        <div class="container">
             <div class="conteudo-exemplar">
                 <div class="container-img">
-                    <img src="{{ book.cover.url }}" class="exemplar-img">
+                  <img src="{{ book.cover.url }}" class="exemplar-img" />
                 </div>
                 <div class="exemplar-atributos">
-                    <div class="container-info">
-                        <h1 class="titulo-exemplar">{{ book.name }}</h1>
-
-                        <table class="table table-borderless tabela-info">
-                            <thead>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="span-exemplar">Autor</td>
-                                    <td class="texto-exemplar">{{ book.author }}</td>
-                                </tr>
-
-                                <tr>
-                                    <td class="span-exemplar">Editora</td>
-                                    <td class="texto-exemplar">Biblioteca</td>
-                                </tr>
-
-                                <tr>
-                                    <td class="span-exemplar">Edição</td>
-                                    <td class="texto-exemplar">5º</td>
-                                </tr>
-
-                                <tr>
-                                    <td class="span-exemplar">Ano</td>
-                                    <td class="texto-exemplar">2018</td>
-                                </tr>
-
-                                <tr>
-                                    <td class="span-exemplar">Páginas</td>
-                                    <td class="texto-exemplar">240</td>
-                                </tr>
-                            </tbody>
-                        </table>
-
-                        <h1 class="exemplar-disponibilidade">4 exemplares disponíveis</h1>
-                    </div>
-
-                    <div>
-                        <button class="botao-adicionar-lista">
-                            <ion-icon name="star-outline" class="star-icon"></ion-icon>
-                            Adicionar à lista
-                        </button>
-                    </div>
-
+                  <div class="container-info">
+                    <h1 class="titulo-exemplar">{{ book.name }}</h1>
+          
+                    <table class="table table-borderless tabela-info">
+                      <thead></thead>
+                      <tbody>
+                        <tr>
+                          <td class="span-exemplar">Autor</td>
+                          <td class="texto-exemplar">{{ book.author }}</td>
+                        </tr>
+          
+                        <tr>
+                          <td class="span-exemplar">Editora</td>
+                          <td class="texto-exemplar">Biblioteca</td>
+                        </tr>
+          
+                        <tr>
+                          <td class="span-exemplar">Edição</td>
+                          <td class="texto-exemplar">5º</td>
+                        </tr>
+          
+                        <tr>
+                          <td class="span-exemplar">Ano</td>
+                          <td class="texto-exemplar">2018</td>
+                        </tr>
+          
+                        <tr>
+                          <td class="span-exemplar">Páginas</td>
+                          <td class="texto-exemplar">240</td>
+                        </tr>
+                      </tbody>
+                    </table>
+          
+                    <h1 class="exemplar-disponibilidade">4 exemplares disponíveis</h1>
+                  </div>
+          
+                  <div>
+                    <button class="botao-adicionar-lista">
+                      <ion-icon name="star-outline" class="star-icon"></ion-icon>
+                      Adicionar à lista
+                    </button>
+                  </div>
                 </div>
                 <div class="container-compartilhar">
-                    <button class="share-icon">
-                        <ion-icon name="share-social" class="share-icon"></ion-icon>
-                    </button>
-
+                  <button class="share-icon">
+                    <ion-icon name="share-social" class="share-icon"></ion-icon>
+                  </button>
                 </div>
-
             </div>
-
-            <div>
+          
+              <div>
                 <div>
-                    <h1 class="descricao-titulo">Descrição</h1>
-                    <p class="descricao-texto">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor iusto
-                        quasi asperiores officiis
-                        ullam, magnam repellendus accusamus sed esse eius delectus dolore quisquam pariatur debitis!
-                        Magnam, recusandae. O cliente está muito feliz. E a menos que estejamos cegos pela suavidade de
-                        certos prazeres e acusações. Nos nossos deveres, porém, esses deveres são cumpridos, e na
-                        verdade todos, porque, no entanto, não é fácil. E nenhum deles é prazer ou dor em si. Ele quer
-                        sofrer nas dificuldades da vida. Nos nossos deveres, porém, esses deveres são cumpridos, e na
-                        verdade todos, porque, no entanto, não é fácil. E nenhum deles é prazer ou dor em si. 33 Ele
-                        quer sofrer nas dificuldades da vida.</p>
+                  <h1 class="descricao-titulo">Descrição</h1>
+                  <p class="descricao-texto"></p>
                 </div>
-
+          
                 <div>
-                    <h1 class="descricao-titulo">Categoria</h1>
-                    <p class="descricao-texto">{{ book.category }}</p>
+                  <h1 class="descricao-titulo">Categoria</h1>
+                  <p class="descricao-texto">{{ book.category }}</p>
                 </div>
-            </div>
-        </section>
-
-        <section class="conteudo-similares">
-            <h1 class="similares-texto">Veja mais livros da mesma categoria</h1>
-
-            <div class="container-exemplares">
-
-                <div class="exemplar">
-                    <a href="">
-                        <img src="../img/placeholder-img.png" class="exemplar-similar-img">
-                    </a>
-                    <div class="exemplar-info">
-                        <h2 class="exemplar-titulo">Basta querer</h2>
-                        <h3 class="exemplar-autor">Pablo Marçal</h3>
-                        <h4 class="exemplar-similar-disponibilidade">4 exemplares disponíveis</h4>
-                    </div>
-                </div>
-
-                <div class="exemplar">
-                    <a href="">
-                        <img src="../img/placeholder-img.png" class="exemplar-similar-img">
-                    </a>
-                    <div class="exemplar-info">
-                        <h2 class="exemplar-titulo">Morte no nilo</h2>
-                        <h3 class="exemplar-autor">Agatha Christie</h3>
-                        <h4 class="exemplar-similar-disponibilidade">4 exemplares disponíveis</h4>
-                    </div>
-                </div>
-
-                <div class="exemplar">
-                    <a href="">
-                        <img src="../img/placeholder-img.png" class="exemplar-similar-img">
-                    </a>
-                    <div class="exemplar-info">
-                        <h2 class="exemplar-titulo">Lolita</h2>
-                        <h3 class="exemplar-autor">Vladimir Nabokov</h3>
-                        <h4 class="exemplar-similar-disponibilidade">2 exemplares disponíveis</h4>
-                    </div>
-                </div>
-
-                <div class="exemplar">
-                    <a href="">
-                        <img src="../img/placeholder-img.png" class="exemplar-similar-img">
-                    </a>
-                    <div class="exemplar-info">
-                        <h2 class="exemplar-titulo">A premonição</h2>
-                        <h3 class="exemplar-autor">Michael Lewis</h3>
-                        <h4 class="exemplar-similar-disponibilidade">11 exemplares disponíveis</h4>
-                    </div>
-                </div>
-
-                <div class="exemplar">
-                    <a href="">
-                        <img src="../img/placeholder-img.png" class="exemplar-similar-img">
-                    </a>
-                    <div class="exemplar-info">
-                        <h2 class="exemplar-titulo">Avião sem brasa</h2>
-                        <h3 class="exemplar-autor">Claudio & Bochecha</h3>
-                        <h4 class="exemplar-similar-disponibilidade">2 exemplares disponíveis</h4>
-                    </div>
-                </div>
-
-
-            </div>
-
-        </section>
-
-    </main>
-
-
-    <footer class="text-center text-lg-start bg-body-tertiary">
-
+              </div>
+        </div>
+    </section>
+  
+    <section class="conteudo-similares">
         <div class="container">
-            <div class="row">
-                <div class="col-10 offset-1">
-                    <section class="sec">
-                        <div class="container text-center text-md-start pt-1 pb-1">
-                            <div class="mb-4 pt-3 mx-xl-0">
-
-                                <span><b class="ourbook">OurBook</b>,<br />Conectando leitores e
-                                    livros.</span>
-                            </div>
-                        </div>
-                    </section>
-
-                    <section class="sec">
-                        <div class="container text-center text-md-start">
-                            <!-- Grid row -->
-                            <div class="row mt-2">
-                                <!-- Grid column -->
-                                <div class="icons col-md-3 col-lg-4 col-xl-4 mb-4">
-                                    <!-- Content -->
-                                    <div class="footer-info mb-2 social-media">
-                                        Acompanhe nossas redes sociais
-                                    </div>
-                                    <i data-feather="instagram"></i>
-                                    <i data-feather="linkedin"></i>
-                                    <i data-feather="facebook"></i>
-                                </div>
-
-                                <div class="col-md-2 col-lg-2 col-xl-auto mb-4 me-auto ps-0">
-                                    <!-- Links -->
-                                    <div class="footer-info mb-2 footer-topics">Ajuda</div>
-                                    <div class="mb-1">
-                                        <a href="#!" class="text-reset">Política de Privacidade</a>
-                                    </div>
-                                    <div class="mb-1 footer-li">
-                                        <a href="#!" class="text-reset">Política de Cookies</a>
-                                    </div>
-                                    <div class="footer-li">
-                                        <a href="#!" class="text-reset">Termos e Condições</a>
-                                    </div>
-                                    <div class="footer-li">
-                                        <a href="#!" class="text-reset">Suporte</a>
-                                    </div>
-                                </div>
-                                <!-- Grid column -->
-
-                                <!-- Grid column -->
-                                <div class="col-md-3 col-lg-2 col-xl-auto mb-4 mx-auto">
-                                    <!-- Links -->
-                                    <div class="footer-info mb-2 footer-topics">Endereço</div>
-                                    <div class="mb-1 footer-li">Cidade Universitária</div>
-                                    <div class="mb-1 footer-li">
-                                        Av. Costa e Silva - Pioneiros MS
-                                    </div>
-                                    <div class="footer-li">CEP 79070-900</div>
-                                </div>
-                                <!-- Grid column -->
-
-                                <!-- Grid column -->
-                                <div class="col-md-4 col-lg-3 col-xl-auto mb-md-0 mb-4 mx-auto">
-                                    <!-- Links -->
-                                    <div class="footer-info mb-2 footer-topics">Horários</div>
-                                    <div class="mb-1 footer-li">Segunda à Sexta-feira</div>
-                                    <div class="footer-li">06h - 22h</div>
-                                </div>
-                                <!-- Grid column -->
-                                <hr class="line mx-4 mt-4 mb-0" />
-                            </div>
-                            <!-- Grid row -->
-                        </div>
-                    </section>
-                    <!-- Section: Links  -->
-                    <!-- Copyright -->
-                    <div class="copyright text-center p-4">
-                        © 2024 OurBook. Todos direitos reservados
-                    </div>
-                    <!-- Copyright -->
-                </div>
+            <h1 class="similares-texto">Veja mais livros da mesma categoria</h1>
+  
+            <div class="container-exemplares">
+                {% for book in same_category_books %}
+                    {% include 'components/linux.html' %}
+                {% endfor %}
             </div>
         </div>
-    </footer>
-    <!-- Footer -->
-
-    <script>
-        feather.replace();
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
-        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
-        integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
-        crossorigin="anonymous"></script>
-
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    </section>
+</main>
+    
 {% endblock %}
-
-</html>
