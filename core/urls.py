@@ -6,4 +6,5 @@ from core import settings
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("user.urls")),
+    path("", include("book.urls")),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_URL)

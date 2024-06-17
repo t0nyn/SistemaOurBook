@@ -5,6 +5,7 @@ from django.contrib.auth import authenticate
 from django.contrib.auth import login as login_user
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from book.models import Book
 
 
 # Create your views here.
@@ -22,13 +23,8 @@ def register(request):
     return render(request, "user/register.html", context=context)
 
 
-@login_required
-def home(request):
-    return HttpResponse("home")
-
-
 def login(request):
-    context = {"register_url": resolve_url("register"), "login_fail": None}
+    context = {"login_fail": None}
     if request.method == "POST":
         username = request.POST.get("username")
         password = request.POST.get("password")

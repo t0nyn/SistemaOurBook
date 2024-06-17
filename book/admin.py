@@ -11,7 +11,8 @@ class CategoryAdmin(admin.ModelAdmin):
 
 @admin.register(models.Book)
 class BookAdmin(admin.ModelAdmin):
-    list_display = ("name", "author", "category", "format_image")
+    list_display = ("name", "author", "category", "image_url")
 
-    def format_image(self, obj):
-        return format_html(f'<img src="{obj.cover.url}">')
+    def image_url(self, obj):
+        return format_html(f'<a href="{obj.cover.url}">link</a>')
+        # return f'<a href="{obj.cover.url}"></a>'

@@ -1,0 +1,168 @@
+{% load static %}
+{% load icon %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{% block title %}{% endblock %}</title>
+  {% load bootstrap5 %}
+  {% bootstrap_css %}
+  {% bootstrap_javascript %}
+  <link rel="icon" type="image/x-icon" href="{% static 'images/book.ico' %}">
+  <link rel="stylesheet" href="{% static 'css/base-user/style.css' %}">
+  {% block css %}{% endblock %}
+</head>
+<body>
+    <div class="menu-navegacao">
+        <a class="menu-logo" href="{% url 'home' %}">
+          <img src="../img/Logo-transparente.png" class="menu-logo--img" />
+        </a>
+        <nav>
+          <ul class="menu-nav mb-0">
+            <div class="menu-nav-list">
+              <li>
+                <a class="nav-item-active" href="{% url 'home' %}">Início</a>
+              </li>
+              <li>
+                <a class="nav-item-inactive" href="#">Categorias</a>
+              </li>
+              <li>
+                <a class="nav-item-inactive" href="#">Recentes</a>
+              </li>
+              <li>
+                <a class="nav-item-inactive" href="#">Acervo Geral</a>
+              </li>
+              <li>
+                <a class="nav-item-inactive" href="#">Empréstimo</a>
+              </li>
+              <a href="#" class="nav-item-inactive">
+                <ion-icon name="search" class="search-icon"></ion-icon>
+              </a>
+            </div>
+    
+            <li class="container-dropdown">
+              <div class="dropdown">
+                <button class="btn btn-secondary button-account" type="button" id="dropdownMenuButton"
+                  data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  {{ username }}
+                  <i class="fa fa-heart"></i>
+                  <ion-icon name="chevron-down" class="chevron-icon"></ion-icon>
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item dropdown-item--primeiro" href="#">
+                    <ion-icon name="star-outline" class="account-icon"></ion-icon>
+                    Minha lista
+                  </a>
+                  <a class="dropdown-item" href="#">
+                    <ion-icon name="book-outline" class="account-icon"></ion-icon>
+                    Meus empréstimos
+                  </a>
+                  <a class="dropdown-item" href="#">
+                    <ion-icon name="calendar-outline" class="account-icon"></ion-icon>
+                    Reservas
+                  </a>
+                  <a class="dropdown-item" href="#">
+                    <ion-icon name="settings-outline" class="account-icon"></ion-icon>
+                    Configurações
+                  </a>
+                  <a class="dropdown-item dropdown-item--ultimo" href="{% url 'login' %}">
+                    <ion-icon name="log-out-outline" class="account-icon"></ion-icon>
+                    Sair da conta
+                  </a>
+                </div>
+              </div>
+    
+            </li>
+    
+          </ul>
+    
+        </nav>
+    </div>
+    
+    {% block content %}
+    {% endblock %}
+    <footer class="text-center text-lg-start bg-body-tertiary">
+
+        <div class="container">
+          <div class="row">
+            <div class="col-10 offset-1">
+              <section class="sec">
+                <div class="container text-center text-md-start pt-1 pb-1">
+                  <div class="mb-4 pt-3 mx-xl-0">
+    
+                    <span><b class="ourbook">OurBook</b>,<br />Conectando leitores e
+                      livros.</span>
+                  </div>
+                </div>
+              </section>
+    
+              <section class="sec">
+                <div class="container text-center text-md-start">
+                  <!-- Grid row -->
+                  <div class="row mt-2">
+                    <!-- Grid column -->
+                    <div class="icons col-md-3 col-lg-4 col-xl-4 mb-4">
+                      <!-- Content -->
+                      <div class="footer-info mb-2 social-media">
+                        Acompanhe nossas redes sociais
+                      </div>
+                      <i data-feather="instagram"></i>
+                      <i data-feather="linkedin"></i>
+                      <i data-feather="facebook"></i>
+                    </div>
+    
+                    <div class="col-md-2 col-lg-2 col-xl-auto mb-4 me-auto ps-0">
+                      <!-- Links -->
+                      <div class="footer-info mb-2 footer-topics">Ajuda</div>
+                      <div class="mb-1">
+                        <a href="#!" class="text-reset">Política de Privacidade</a>
+                      </div>
+                      <div class="mb-1 footer-li">
+                        <a href="#!" class="text-reset">Política de Cookies</a>
+                      </div>
+                      <div class="footer-li">
+                        <a href="#!" class="text-reset">Termos e Condições</a>
+                      </div>
+                      <div class="footer-li">
+                        <a href="#!" class="text-reset">Suporte</a>
+                      </div>
+                    </div>
+                    <!-- Grid column -->
+    
+                    <!-- Grid column -->
+                    <div class="col-md-3 col-lg-2 col-xl-auto mb-4 mx-auto">
+                      <!-- Links -->
+                      <div class="footer-info mb-2 footer-topics">Endereço</div>
+                      <div class="mb-1 footer-li">Cidade Universitária</div>
+                      <div class="mb-1 footer-li">
+                        Av. Costa e Silva - Pioneiros MS
+                      </div>
+                      <div class="footer-li">CEP 79070-900</div>
+                    </div>
+                    <!-- Grid column -->
+    
+                    <!-- Grid column -->
+                    <div class="col-md-4 col-lg-3 col-xl-auto mb-md-0 mb-4 mx-auto">
+                      <!-- Links -->
+                      <div class="footer-info mb-2 footer-topics">Horários</div>
+                      <div class="mb-1 footer-li">Segunda à Sexta-feira</div>
+                      <div class="footer-li">06h - 22h</div>
+                    </div>
+                    <!-- Grid column -->
+                    <hr class="line mx-4 mt-4 mb-0" />
+                  </div>
+                  <!-- Grid row -->
+                </div>
+              </section>
+              <!-- Section: Links  -->
+              <!-- Copyright -->
+              <div class="copyright text-center p-4">
+                © 2024 OurBook. Todos direitos reservados
+              </div>
+              <!-- Copyright -->
+            </div>
+          </div>
+        </div>
+      </footer>
+    {% block script %}
+    {% endblock %}
+</body>

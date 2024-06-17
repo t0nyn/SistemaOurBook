@@ -1,4 +1,4 @@
-{% extends "../base/index.html" %} {% load static %} {% block title %} Register
+{% extends "base/index.html" %} {% load static %} {% block title %} Register
 {% endblock %} {% block css %}
 <link rel="stylesheet" href="{% static 'css/user/style.css' %}" />
 {% endblock %} {% block content %}
@@ -18,7 +18,7 @@
               <div class="create-acc">
                 <p class="pb-0 mb-0">
                   <b>Criar uma conta</b><br />Já tem uma conta?
-                  <a href="{{ login_url }}">login</a>
+                  <a href="{% url 'login' %}">login</a>
                 </p>
               </div>
             </div>
@@ -32,7 +32,7 @@
                   <input
                     type="text"
                     class="form-control"
-                    placeholder="Digite seu usuário"
+                    placeholder="Defina seu usuário"
                     id="exampleInputEmail1"
                     name="username"
                     aria-describedby="emailHelp"
@@ -61,7 +61,7 @@
                     type="password"
                     class="form-control"
                     name="password"
-                    placeholder="Digite sua senha"
+                    placeholder="Defina sua senha"
                     id="exampleInputPassword1"
                     required
                   />

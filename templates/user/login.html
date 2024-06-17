@@ -1,4 +1,4 @@
-{% extends "../base/index.html" %} 
+{% extends "base/index.html" %} 
 {% load static %} 
 {% block title %} Login {% endblock %} 
 {% block css %}
@@ -21,7 +21,7 @@
               <div class="create-acc">
                 <p class="pb-0 mb-0">
                   <b>Entrar na conta</b><br />Não tem uma conta?
-                  <a href="{{ register_url }}">Criar conta</a>
+                  <a href="{% url 'register' %}">Criar conta</a>
                 </p>
               </div>
             </div>
@@ -35,7 +35,7 @@
                   <input
                     type="text"
                     class="form-control"
-                    placeholder="Digite seu email"
+                    placeholder="Digite seu usuário"
                     id="exampleInputEmail1"
                     name="username"
                     aria-describedby="emailHelp"

@@ -1,0 +1,278 @@
+/* EXEMPLAR */
+
+.container-exemplar {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    background-color: #FFF;
+    padding: 3rem;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+    border-radius: 15px;
+    border-width: 1.5px;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.2);
+    gap: 2rem;
+}
+
+.conteudo-exemplar {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.exemplar-img {
+    width: 220px;
+    height: 320px;
+    border-radius: 10px;
+    margin-right: 1rem;
+}
+
+.exemplar-atributos {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.container-info {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.titulo-exemplar {
+    font-weight: 500;
+    font-size: 1.3rem;
+    font-family: "Poppins", sans-serif;
+    color: #000;
+}
+
+.tabela-info {
+    width: 100%;
+}
+
+.texto-exemplar {
+    font-weight: 400;
+    font-size: 1.1rem;
+    font-family: "Poppins", sans-serif;
+    color: #000;
+    padding: 0 !important;
+}
+
+.span-exemplar {
+    font-weight: 600;
+    font-size: 1.1rem;
+    font-family: "Poppins", sans-serif;
+    color: #000;
+    width: 35%;
+    padding: 0 !important;
+}
+
+.exemplar-disponibilidade {
+    font-weight: 500;
+    font-size: 16px;
+    font-family: "Poppins", sans-serif;
+    color: #3465E1;
+    padding-top: 1.5rem;
+}
+
+.botao-adicionar-lista {
+    border: none;
+    gap: 1rem;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    background-color: #3465E1;
+    color: #FFF;
+    padding: 0.6rem 1.7rem 0.6rem 1.7rem;
+}
+
+.star-icon {
+    font-size: 20px;
+}
+
+.share-icon {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    outline: inherit;
+    font-size: 30px;
+}
+
+.descricao-titulo {
+    font-weight: 600;
+    font-size: 1.1rem;
+    font-family: "Poppins", sans-serif;
+    color: #000;
+}
+
+
+.descricao-texto {
+    text-align: justify;
+    font-weight: 400;
+    font-size: 1rem;
+    font-family: "Poppins", sans-serif;
+    color: #000;
+}
+
+/* LIVROS SIMILARES */
+
+.conteudo-similares {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}
+
+.similares-texto {
+    font-weight: 500;
+    font-size: 1.4rem;
+    font-family: "Poppins", sans-serif;
+    color: #000;
+}
+
+.container-exemplares {
+    display: flex;
+    width: 100%;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    justify-content: space-between;
+}
+
+.exemplar {
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    width: 18%;
+    padding-top: 0.5rem;
+    background-color: #FFF;
+    align-items: center;
+}
+
+.exemplar-similar-img {
+    width: 200px;
+    border-radius: 10px;
+}
+
+.exemplar-info {
+    margin-top: 0.5rem;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.exemplar-titulo {
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+}
+
+.exemplar-autor {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.exemplar-similar-disponibilidade {
+    margin-top: 1rem;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    color: #3465E1;
+}
+
+/* FOOTER */
+
+footer {
+    margin-top: 3rem;
+    background-color: #262627;
+    height: auto;
+}
+
+.footer-info {
+    color: #d1d1d1;
+}
+
+.icons {
+    color: #d6d6d6;
+}
+
+.ourbook {
+    font-size: 2rem;
+    color: #fff;
+    font-weight: 900;
+}
+
+.sec {
+    color: #d1d1d1;
+}
+
+.social-media {
+    font-weight: 400;
+}
+
+.footer-topics {
+    font-weight: 600;
+}
+
+footer a {
+    text-decoration: none;
+}
+
+.footer-li {
+    font-weight: 300;
+}
+
+span {
+    color: #e8e8e8;
+    font-size: 1.1rem;
+    font-weight: 400;
+}
+
+.line {
+    color: #7c7c7c;
+}
+
+.copyright {
+    color: #868585;
+}
+
+/* RESPONSIVIDADE (GAMBIARRA) */
+
+@media screen and (max-width: 1150px) {
+    .menu-nav-list {
+        visibility: hidden;
+        display: none;
+    }
+
+    .menu-logo {
+        width: 9%;
+    }
+
+    .botao-categoria {
+        padding: 28px;
+    }
+
+    .botao-categoria:hover {
+        border-color: #3465E1;
+        border-width: 3px;
+        color: #000;
+        padding: 27px;
+    }
+
+    .conteudo-destaque {
+        padding-left: 7rem;
+        padding-right: 7rem;
+    }
+
+    .exemplar-img {
+        width: 150px;
+        height: 200px;
+        border-radius: 18px;
+    }
+}
