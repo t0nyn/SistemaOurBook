@@ -11,12 +11,29 @@ class CategoryAdmin(admin.ModelAdmin):
 
 @admin.register(models.Book)
 class BookAdmin(admin.ModelAdmin):
-    list_display = ("name", "author", "format_categories", "image_url")
+    list_display = ("titulo", "autor", "imagem")
 
-    def image_url(self, obj):
+    def imagem(self, obj):
         return format_html(f'<a href="{obj.cover.url}">link</a>')
 
     def format_categories(self, obj):
         return ", ".join([category.name for category in obj.categories])
 
+    def titulo(self, obj):
+        return obj.name
+
+    def autor(self, obj):
+        return obj.author
+
     # format_categories.short_description("Categories")
+
+
+@admin.register(models.BookCopy)
+class BookCopyAdmin(admin.ModelAdmin):
+    list_display = ("codigo", "titulo")
+
+    def titulo(self, obj):
+        return obj.book.name
+
+    def codigo(self, obj):
+        return obj.id

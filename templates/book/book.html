@@ -30,7 +30,7 @@
           
                         <tr>
                           <td class="span-exemplar">Editora</td>
-                          <td class="texto-exemplar">Biblioteca</td>
+                          <td class="texto-exemplar">{{ book.publisher }}</td>
                         </tr>
           
                         <tr>
@@ -50,7 +50,7 @@
                       </tbody>
                     </table>
           
-                    <h1 class="exemplar-disponibilidade">4 exemplares disponíveis</h1>
+                    <h1 class="exemplar-disponibilidade">{{ book.copy_count }} exemplares disponíveis</h1>
                   </div>
           
                   <div>
@@ -75,7 +75,7 @@
           
                 <div>
                   <h1 class="descricao-titulo">Categoria</h1>
-                  <p class="descricao-texto">{{ book.category }}</p>
+                  <p class="descricao-texto">{% for category in book.categories.all %}{{category}} {% endfor %}</p>
                 </div>
               </div>
         </div>

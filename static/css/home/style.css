@@ -109,7 +109,7 @@ header {
   display: flex;
   flex-direction: column;
   border-radius: 20px;
-  width: 20%;
+  width: auto;
   padding-top: 0.5rem;
   background-color: #FFF;
   align-items: center;
@@ -127,6 +127,8 @@ header {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  align-items: center;
+  
 }
 
 .exemplar-titulo {

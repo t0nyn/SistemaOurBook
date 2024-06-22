@@ -11,16 +11,16 @@
             <a class="{% if 'home' in request.path %}nav-item-active{% endif %} nav-item-inactive" href="{% url 'home' %}">Início</a>
           </li>
           <li>
-            <a class="{% if 'home' in request.path %}nav-item-active{% endif %} nav-item-inactive" href="#">Categorias</a>
+            <a class="{% if 'kleber' in request.path %}nav-item-active{% endif %} nav-item-inactive" href="#">Categorias</a>
           </li>
           <li>
-            <a class="{% if 'home' in request.path %}nav-item-active{% endif %} nav-item-inactive" href="#">Recentes</a>
+            <a class="{% if 'kleber' in request.path %}nav-item-active{% endif %} nav-item-inactive" href="#">Recentes</a>
           </li>
           <li>
-            <a class="{% if 'home' in request.path %}nav-item-active{% endif %} nav-item-inactive" href="#">Acervo Geral</a>
+            <a class="{% if 'kleber' in request.path %}nav-item-active{% endif %} nav-item-inactive" href="#">Acervo Geral</a>
           </li>
           <li>
-            <a class="{% if 'home' in request.path %}nav-item-active{% endif %} nav-item-inactive" href="#">Empréstimo</a>
+            <a class="{% if 'loans' in request.path %}nav-item-active{% endif %} nav-item-inactive" href="{% url 'loans' %}">Empréstimo</a>
           </li>
           <a href="#" class="nav-item-inactive">
             {% icon "search" %}
@@ -31,7 +31,7 @@
           <div class="dropdown">
             <button class="btn btn-secondary button-account" type="button" id="dropdownMenuButton"
               data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                {{username}}
+                {{request.user.username}}
               {% icon 'chevron-down' %}
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">

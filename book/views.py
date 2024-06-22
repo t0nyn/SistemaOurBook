@@ -7,6 +7,7 @@ from django.contrib.auth import login as login_user
 from django.contrib.auth.decorators import login_required
 from book.models import Book, Category
 from transactions.models import Loan
+from transactions.models import Renovation
 from django.contrib.auth.models import User
 
 
@@ -14,8 +15,12 @@ from django.contrib.auth.models import User
 @login_required
 def home(request):
     if request.user.is_superuser:
-        loans = Loan.objects.all()
+        past_loans = Loan.objects.filter(return_date__isnull=True)
+        loans = Loan.objects.filter(return_date__isnull=False)
+        renovations = Renovation.objects.all()
         context = {
+            "past_loans": past_loans,
+            "renovations": renovations,
             "loans": loans,
         }
         return render(request, "adm/adm.html", context=context)
@@ -32,7 +37,9 @@ def home(request):
 
 def book_page(request, id):
     book = Book.objects.get(id=id)
-    same_category_books = Book.objects.exclude(id=id).filter(category=book.category)
+    same_category_books = Book.objects.exclude(id=id).filter(
+        categories__in=book.categories.all()
+    )
     context = {
         "book": book,
         "username": request.user,
