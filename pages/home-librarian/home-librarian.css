@@ -121,6 +121,10 @@ main {
 	font-size: 0.8rem;
 }
 
+.sidebar-icon{
+	width: 15px !important;
+}
+
 /* MENU SUPERIOR */
 
 #menu-superior {
@@ -239,7 +243,7 @@ main {
 	font-size: 1rem;
 	font-weight: 600;
 	font-family: "Poppins", sans-serif;
-	padding: 1rem 1rem 1rem 1.5rem;
+	padding: 1rem 1rem 1rem 1rem;
 }
 
 .tabela-cabeçalho {
@@ -278,13 +282,13 @@ main {
 
 .tabela-texto {
 	font-size: 0.9rem;
-	padding: 0.7rem 0rem 0.7rem 1.5rem !important;
+	padding: 0.7rem 0rem 0.7rem 0.7rem !important;
 	font-weight: 400;
 	font-family: "Poppins", sans-serif;
 }
 
 .edit-icon {
-	font-size: 18px;
 	color: black;
 	padding-right: 1rem;
+	width: 32px !important;
 }
