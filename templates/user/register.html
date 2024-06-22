@@ -1,5 +1,6 @@
-{% extends "base/index.html" %} {% load static %} {% block title %} Register
-{% endblock %} {% block css %}
+{% extends "base/index.html" %} 
+{% load static %} 
+{% block title %}Register{% endblock %} {% block css %}
 <link rel="stylesheet" href="{% static 'css/user/style.css' %}" />
 {% endblock %} {% block content %}
 <main>
@@ -26,35 +27,37 @@
               <form method="POST">
                 {% csrf_token %}
                 <div class="mb-3">
-                  <label for="exampleInputEmail1" class="form-label"
+                  <label for="user" class="form-label"
                     >Usuário</label
                   >
                   <input
                     type="text"
                     class="form-control"
                     placeholder="Defina seu usuário"
-                    id="exampleInputEmail1"
+                    id="user"
                     name="username"
                     aria-describedby="emailHelp"
                     required
                   />
                 </div>
                 <div class="mb-3">
-                  <label for="exampleInputEmail1" class="form-label"
-                    >E-mail</label
+                  <label for="cpf" class="form-label"
+                    >CPF</label
                   >
                   <input
-                    type="email"
+                    type="text"
                     class="form-control"
-                    placeholder="Digite seu email"
-                    id="exampleInputEmail1"
-                    name="email"
+                    placeholder="Informe seu CPF"
+                    maxlength="14"
+                    oninput="mascaraCPF(this)"
+                    id="cpf"
+                    name="cpf"
                     aria-describedby="emailHelp"
                     required
                   />
                 </div>
                 <div class="mb-3">
-                  <label for="exampleInputPassword1" class="form-label"
+                  <label for="password" class="form-label"
                     >Senha</label
                   >
                   <input
@@ -62,7 +65,7 @@
                     class="form-control"
                     name="password"
                     placeholder="Defina sua senha"
-                    id="exampleInputPassword1"
+                    id="password"
                     required
                   />
                 </div>
@@ -79,27 +82,14 @@
 </main>
 {% endblock %}
 
-<!-- <div class="mb-3">
-                  <label for="exampleInputEmail1" class="form-label"
-                    >Usuário</label
-                  >
-                  <input
-                    type="email"
-                    class="form-control"
-                    placeholder="Digite seu email"
-                    id="exampleInputEmail1"
-                    aria-describedby="emailHelp"
-                    required
-                  />
-                </div>
-                <div class="mb-3">
-                  <label for="exampleInputPassword1" class="form-label"
-                    >Senha</label
-                  >
-                  <input
-                    type="password"
-                    class="form-control"
-                    placeholder="Digite sua senha"
-                    id="exampleInputPassword1"
-                    required
-    /> -->
+{% block script %}
+<script>
+  function mascaraCPF(cpf) {
+    cpf.value = cpf.value
+        .replace(/\D/g, '') // Remove tudo o que não é dígito
+        .replace(/(\d{3})(\d)/, '$1.$2') // Coloca um ponto entre o terceiro e o quarto dígitos
+        .replace(/(\d{3})(\d)/, '$1.$2') // Coloca um ponto entre o sexto e o sétimo dígitos
+        .replace(/(\d{3})(\d{1,2})$/, '$1-$2'); // Coloca um hífen entre o nono e o décimo dígitos
+}
+</script>
+{% endblock %}

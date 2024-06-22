@@ -4,7 +4,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as login_user
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User
+from user.models import OurBookUser
 from book.models import Book
 
 
@@ -14,11 +14,13 @@ def register(request):
     if request.method == "POST":
         username = request.POST.get("username")
         password = request.POST.get("password")
-        email = request.POST.get("email")
-
-        user = User.objects.create_user(username, email, password)
+        cpf = request.POST.get("cpf")
+        user = OurBookUser.objects.create_user(
+            username=username, password=password, cpf=cpf
+        )
+        login_user(request, user)
         next_url = request.GET.get("next", "home")
-        return redirect(resolve_url(next_url))
+        return redirect(resolve_url("home"))
 
     return render(request, "user/register.html", context=context)
 

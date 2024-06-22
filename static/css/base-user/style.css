@@ -90,7 +90,7 @@
     font-size: 1.05rem;
     font-family: "Questrial", sans-serif;
     letter-spacing: 0.35px;
-    color: #3465E1;
+    color: #3465E1 !important;
   }
   
   .nav-item-inactive {

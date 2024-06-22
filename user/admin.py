@@ -1,3 +1,8 @@
 from django.contrib import admin
+from django.contrib.auth.admin import UserAdmin
+from .models import OurBookUser
 
-# Register your models here.
+
+@admin.register(OurBookUser)
+class OurBookAdmin(admin.ModelAdmin):
+    list_display = ("cpf",)

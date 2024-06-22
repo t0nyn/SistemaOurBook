@@ -1,0 +1,252 @@
+{% extends "base/index.html" %} 
+{% load static %} 
+{% load icon %}
+{% block title %}Meus Empréstimos{% endblock %} 
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/loans/style.css' %}" />
+{% endblock %}
+{% block content %}
+
+{% include 'components/navbar.html' %}
+
+<main>
+
+    <header>
+        <h1 class="header-titulo">Meus empréstimos</h1>
+    </header>
+
+    <section class="container-emprestimos">
+
+        <div class="emprestimos-vigentes">
+
+            <h1 class="emprestimos-titulo">Empréstimos vigentes</h1>
+
+            <div class="conteudo-exemplar">
+
+                <div class="container-exemplar">
+                    <div class="container-img">
+                        <img src="../img/placeholder-img.png" class="exemplar-img">
+                    </div>
+                    <div class="exemplar-atributos">
+                        <div class="container-info">
+                            <h1 class="titulo-exemplar">Fahrenheit 451</h1>
+
+                            <table class="table table-borderless tabela-info">
+                                <tbody>
+                                    <tr>
+                                        <td class="span-exemplar">Autor</td>
+                                        <td class="texto-exemplar">Ray Bradbury</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="span-exemplar">Editora</td>
+                                        <td class="texto-exemplar">Biblioteca</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="span-exemplar">Edição</td>
+                                        <td class="texto-exemplar">5º</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="span-exemplar">Ano</td>
+                                        <td class="texto-exemplar">2018</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="span-exemplar">Páginas</td>
+                                        <td class="texto-exemplar">240</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                        <div>
+                            <h2 class="texto-emprestimo mb-1">Emprestado em: 12/01/2024</h2>
+                            <h2 class="texto-devolucao" style="color: #1F9C51;">Devolver até: 27/01/2024</h2>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="container-botao">
+                    <button class="exemplar-botao" data-bs-toggle="modal" data-bs-target="#modalRenovacao">
+                        Solicitar renovação
+                    </button>
+
+                </div>
+
+            </div>
+
+            <div class="conteudo-exemplar">
+
+                <div class="container-exemplar">
+                    <div class="container-img">
+                        <img src="../img/placeholder-img.png" class="exemplar-img">
+                    </div>
+                    <div class="exemplar-atributos">
+                        <div class="container-info">
+                            <h1 class="titulo-exemplar">Fahrenheit 451</h1>
+
+                            <table class="table table-borderless tabela-info">
+                                <tbody>
+                                    <tr>
+                                        <td class="span-exemplar">Autor</td>
+                                        <td class="texto-exemplar">Ray Bradbury</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="span-exemplar">Editora</td>
+                                        <td class="texto-exemplar">Biblioteca</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="span-exemplar">Edição</td>
+                                        <td class="texto-exemplar">5º</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="span-exemplar">Ano</td>
+                                        <td class="texto-exemplar">2018</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="span-exemplar">Páginas</td>
+                                        <td class="texto-exemplar">240</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                        <div>
+                            <h2 class="texto-emprestimo mb-1">Emprestado em: 12/02/2024</h2>
+                            <h2 class="texto-devolucao" style="color: #DE0B0B;">Devolver até: 27/03/2024</h2>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="container-botao">
+                    <h1 class="renovacao-texto mb-1">Renovado em 27/02/2024</h1>
+                    <h1 class="renovacao-texto">Renovado em 12/03/2024</h1>
+                    <button class="exemplar-botao" data-bs-toggle="modal" data-bs-target="#modalRenovacao">
+                        Solicitar renovação
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="historico-emprestimos">
+
+            <h1 class="emprestimos-titulo">Histórico de empréstimos</h1>
+
+            <div class="conteudo-exemplar">
+
+                <div class="container-exemplar">
+                    <div class="container-img">
+                        <img src="../img/placeholder-img.png" class="exemplar-img">
+                    </div>
+                    <div class="exemplar-atributos">
+                        <div class="container-info">
+                            <h1 class="titulo-exemplar">Fahrenheit 451</h1>
+
+                            <table class="table table-borderless tabela-info">
+                                <tbody>
+                                    <tr>
+                                        <td class="span-exemplar">Autor</td>
+                                        <td class="texto-exemplar">Ray Bradbury</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="span-exemplar">Editora</td>
+                                        <td class="texto-exemplar">Biblioteca</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="span-exemplar">Edição</td>
+                                        <td class="texto-exemplar">5º</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="span-exemplar">Ano</td>
+                                        <td class="texto-exemplar">2018</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="span-exemplar">Páginas</td>
+                                        <td class="texto-exemplar">240</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                        <div>
+                            <h2 class="texto-emprestimo mb-1">Emprestado em: 12/02/2024</h2>
+                            <h2 class="texto-devolucao" style="font-weight: 400;">Devolvido em: 27/03/2024</h2>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="conteudo-exemplar">
+
+                <div class="container-exemplar">
+                    <div class="container-img">
+                        <img src="../img/placeholder-img.png" class="exemplar-img">
+                    </div>
+                    <div class="exemplar-atributos">
+                        <div class="container-info">
+                            <h1 class="titulo-exemplar">Fahrenheit 451</h1>
+
+                            <table class="table table-borderless tabela-info">
+                                <tbody>
+                                    <tr>
+                                        <td class="span-exemplar">Autor</td>
+                                        <td class="texto-exemplar">Ray Bradbury</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="span-exemplar">Editora</td>
+                                        <td class="texto-exemplar">Biblioteca</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="span-exemplar">Edição</td>
+                                        <td class="texto-exemplar">5º</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="span-exemplar">Ano</td>
+                                        <td class="texto-exemplar">2018</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="span-exemplar">Páginas</td>
+                                        <td class="texto-exemplar">240</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                        <div>
+                            <h2 class="texto-emprestimo mb-1">Emprestado em: 12/02/2024</h2>
+                            <h2 class="texto-devolucao" style="font-weight: 400;">Devolvido em: 27/03/2024</h2>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </section>
+
+</main>
+
+{% endblock %}

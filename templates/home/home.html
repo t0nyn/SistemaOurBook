@@ -7,8 +7,8 @@
 
 {% block content %}
   {% include 'components/navbar.html' %}
-  <div class="container">
-    <header>
+  <div class="">
+    <header style="background-image: url(../../static/images/header-banner.png);">
       <h1 class="header-titulo">Explore um mundo de livros<br>ao seu alcance</h1>
       <h2 class="header-subtitulo">Encontre seu livro, reserve e empreste com facilidade.</h2>
       <button class="header-button">
@@ -62,7 +62,7 @@
   
       <div class="container-newsletter">
   
-        <img src="../img/newsletter-img.png" class="newsletter-img">
+        <img src="{% static '/images/newsletter-img.png' %}" class="newsletter-img">
   
         <div class="conteudo-newsletter">
           <h1 class="newsletter-titulo">Fique por dentro das novidades</h1>

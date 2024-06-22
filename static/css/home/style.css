@@ -6,7 +6,7 @@ header {
   padding-bottom: 5rem;
   padding-right: 5rem;
   padding-left: 3.5rem;
-  background-image: url("../img/header-banner.png");
+  background-image: url('../../../static/images/header-banner.png');
   margin-bottom: 4rem;
 }
 

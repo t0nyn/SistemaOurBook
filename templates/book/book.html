@@ -1,6 +1,6 @@
 {% extends "base/index.html" %} 
 {% load static %} 
-
+{% load icon %}
 {% block title %} {{ book.name }} {% endblock %} 
 {% block css %}
 <link rel="stylesheet" href="{% static 'css/book/style.css' %}" />
@@ -35,17 +35,17 @@
           
                         <tr>
                           <td class="span-exemplar">Edição</td>
-                          <td class="texto-exemplar">5º</td>
+                          <td class="texto-exemplar">{{ book.edition }}</td>
                         </tr>
           
                         <tr>
                           <td class="span-exemplar">Ano</td>
-                          <td class="texto-exemplar">2018</td>
+                          <td class="texto-exemplar">{{ book.year }}</td>
                         </tr>
           
                         <tr>
                           <td class="span-exemplar">Páginas</td>
-                          <td class="texto-exemplar">240</td>
+                          <td class="texto-exemplar">{{ book.num_pages }}</td>
                         </tr>
                       </tbody>
                     </table>
@@ -55,14 +55,14 @@
           
                   <div>
                     <button class="botao-adicionar-lista">
-                      <ion-icon name="star-outline" class="star-icon"></ion-icon>
+                      {% icon 'star' %}
                       Adicionar à lista
                     </button>
                   </div>
                 </div>
                 <div class="container-compartilhar">
                   <button class="share-icon">
-                    <ion-icon name="share-social" class="share-icon"></ion-icon>
+                    {% icon 'share' %}
                   </button>
                 </div>
             </div>
@@ -70,7 +70,7 @@
               <div>
                 <div>
                   <h1 class="descricao-titulo">Descrição</h1>
-                  <p class="descricao-texto"></p>
+                  <p class="descricao-texto">{{ book.description }}</p>
                 </div>
           
                 <div>

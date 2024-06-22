@@ -204,13 +204,13 @@ li {
 }
 
 .nav-item-active {
-  text-decoration: none;
-  pointer-events: none;
-  font-weight: 600;
-  font-size: 1.05rem;
-  font-family: "Questrial", sans-serif;
-  letter-spacing: 0.35px;
-  color: #3465E1;
+  text-decoration: none !important; 
+  pointer-events: none !important;
+  font-weight: 600 !important;
+  font-size: 1.05rem !important;
+  font-family: "Questrial", sans-serif !important;
+  letter-spacing: 0.35px !important;
+  color: #3465E1 !important;
 }
 
 .nav-item-inactive {
