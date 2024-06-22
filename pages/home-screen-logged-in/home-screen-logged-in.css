@@ -172,7 +172,7 @@ li {
 }
 
 .account-icon{
-  font-size: 22px;
+  width: 18px !important;
 }
 
 /* HEADER */
