@@ -86,10 +86,10 @@
 <script>
   function mascaraCPF(cpf) {
     cpf.value = cpf.value
-        .replace(/\D/g, '') // Remove tudo o que não é dígito
-        .replace(/(\d{3})(\d)/, '$1.$2') // Coloca um ponto entre o terceiro e o quarto dígitos
-        .replace(/(\d{3})(\d)/, '$1.$2') // Coloca um ponto entre o sexto e o sétimo dígitos
-        .replace(/(\d{3})(\d{1,2})$/, '$1-$2'); // Coloca um hífen entre o nono e o décimo dígitos
+        .replace(/\D/g, '') 
+        .replace(/(\d{3})(\d)/, '$1.$2')
+        .replace(/(\d{3})(\d)/, '$1.$2')
+        .replace(/(\d{3})(\d{1,2})$/, '$1-$2'); 
 }
 </script>
 {% endblock %}

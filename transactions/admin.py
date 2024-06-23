@@ -4,4 +4,4 @@ from transactions.models import Loan
 
 @admin.register(Loan)
 class LoanAdmin(admin.ModelAdmin):
-    pass
+    list_display = ("id",)

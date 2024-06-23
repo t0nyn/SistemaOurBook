@@ -28,6 +28,9 @@ class Book(models.Model):
 
         return filtered_copies.count()
 
+    def get_available_copy(self):
+        return self.bookcopy_set.filter(current_status="AVAILABLE").first()
+
     def __str__(self):
         return f"{self.name}"
 
@@ -43,7 +46,7 @@ class BookCopy(models.Model):
         ("RESERVED", "Reserved"),
     ]
     current_status = models.CharField(
-        max_length=15, choices=all_status, default="AVAIABLE"
+        max_length=15, choices=all_status, default="AVAILABLE"
     )
 
     def __str__(self):

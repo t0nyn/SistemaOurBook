@@ -13,12 +13,6 @@ class Loan(models.Model):
     return_date = models.DateField(null=True, blank=True)
     borrower = models.ForeignKey(OurBookUser, on_delete=models.SET_NULL, null=True)
 
-    def update_book_status(self):
-        if self.return_date is None:
-            self.book_copy.status = "BORROWED"
-        else:
-            self.book_copy.status = "AVAILABLE"
-
 
 class Renovation(models.Model):
     loan = models.ForeignKey(Loan, on_delete=models.CASCADE)
