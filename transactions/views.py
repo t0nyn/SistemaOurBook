@@ -7,6 +7,7 @@ from django.db.models import Q
 from django.http import JsonResponse
 from django.forms.models import model_to_dict
 from django.views.decorators.csrf import csrf_exempt
+from datetime import timedelta
 from django.utils import timezone
 
 from user.models import OurBookUser
@@ -87,6 +88,12 @@ def add_loan(request):
 
             book = Book.objects.get(id=book_id)
             borrower = OurBookUser.objects.get(cpf=borrower_id)
+
+            current_number_of_loans = Loan.objects.filter(borrower=borrower_id).count()
+            if current_number_of_loans > 5:
+                return JsonResponse(
+                    {"error": "Maximum number of loans reached"}, status=400
+                )
 
             available_copy = book.get_available_copy()
 
@@ -176,3 +183,51 @@ def return_book(request):
             return JsonResponse({"error": "Invalid JSON"}, status=400)
         except Exception as e:
             return JsonResponse({"error": str(e)}, status=500)
+
+
+@csrf_exempt
+def add_renovation(request):
+    if request.method == "POST":
+        try:
+            data = json.loads(request.body)
+            loan_id = data.get("loan_id")
+
+            loan = Loan.objects.get(id=loan_id)
+
+            if not loan_id:
+                return JsonResponse({"error": "Missing loan_id field"}, status=400)
+
+            loan = get_object_or_404(Loan, id=loan_id)
+
+            renovation_count = Renovation.objects.filter(loan=loan).count()
+
+            if renovation_count >= 2:
+                return JsonResponse(
+                    {"error": "Loan can only be renovated 2 times"}, status=400
+                )
+
+            loan.expected_return_date = timezone.now() + timedelta(days=15)
+            loan.save()
+
+            renovation = Renovation.objects.create(loan=loan)
+
+            renovation_data = {
+                "id": renovation.id,
+                "renovation_date": renovation.renovation_date,
+                "loan_id": renovation.loan.id,
+                "renovation_status": "Renovation Added Succesfully",
+            }
+
+            return JsonResponse(renovation_data, status=201)
+
+        except KeyError as e:
+            return JsonResponse({"error": f"Missing field: {str(e)}"}, status=400)
+        except json.JSONDecodeError:
+            return JsonResponse({"error": "Invalid JSON"}, status=400)
+        except Loan.DoesNotExist:
+            return JsonResponse({"error": "Loan not found"}, status=404)
+        except Exception as e:
+            return JsonResponse({"error": str(e)}, status=500)
+
+    else:
+        return JsonResponse({"error": "Method not allowed"}, status=405)

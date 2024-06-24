@@ -39,6 +39,3 @@ def login(request):
         context["login_fail"] = True
 
     return render(request, "user/login.html", context=context)
-
-
-# def my_loans():
