@@ -240,16 +240,16 @@ li {
   align-items: center !important;
   width: 100%;
   background-color: #FFF !important;
-  padding-top: 9px;
-  padding-bottom: 9px;
   padding-left: 20px;
   padding-right: 20px;
   color: #000 !important;
   font-size: 0.9rem !important;
   font-weight: 400;
   font-family: "Poppins", sans-serif !important;
-  border-radius: 20px !important;
+  border-radius: 100px !important;
   border-width: 0.12rem !important;
+  min-width: 200px;
+  justify-content: space-evenly;
 }
 
 .chevron-icon {
@@ -291,6 +291,6 @@ li {
   padding-bottom: 0.5rem !important;
 }
 
-.account-icon{
-  font-size: 22px;
+.dropdown-item svg {
+  width: 16px;
 }

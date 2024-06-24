@@ -63,15 +63,15 @@
 
                         </div>
                         <div>
-                            <h2 class="texto-emprestimo mb-1">Emprestado em: {{ loan.borrowed_date|date:"d-m-Y" }}</h2>
-                            <h2 class="texto-devolucao" style="color: #1F9C51;">Devolver até: {{ loan.expected_return_date|date:"d-m-Y" }}</h2>
+                            <h2 class="texto-emprestimo mb-1">Emprestado em: {{ loan.borrowed_date|date:"d/m/Y" }}</h2>
+                            <h2 class="texto-devolucao" style="color: #1F9C51;">Devolver até: {{ loan.expected_return_date|date:"d/m/Y" }}</h2>
                         </div>
                     </div>
 
                 </div>
 
                 <div class="container-botao">
-                    <button class="exemplar-botao" data-bs-toggle="modal" data-bs-target="#modalRenovacao">
+                    <button class="exemplar-botao" data-id="{{ loan.id }}" data-bs-toggle="modal" data-bs-target="#modalRenovacao">
                         Solicitar renovação
                     </button>
 
@@ -144,5 +144,70 @@
     </section>
 
 </main>
+
+<!-- Modal Solicita renovação de empréstimo -->
+<div class="modal fade" id="modalRenovacao" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0">
+            <div class="modal-header border-0">
+                <h1 class="modal-title modal-titulo m-auto" id="exampleModalLabel">Solicitar renovação deste exemplar?</h1>
+            </div>
+            <div class="modal-body">
+                <img src="{% static '/images/modal-calendar.png' %}" class="modal-img">
+                <p class="modal-texto">
+                    Ainda não finalizou sua leitura? Não se preocupe, você pode renovar sua reserva por mais 15 dias! Lembre-se, só é possível renovar seu empréstimo por, no máximo, 2 vezes.
+                </p>
+            </div>
+            <div class="modal-footer modal-renovacao border-0">
+                <button type="button" class="btn modal-botao" data-bs-dismiss="modal" style="background-color: #DE0B0B">Cancelar</button>
+                <button type="button" class="btn modal-botao" style="background-color: #1F9C51;"  data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#modalRejeita">Solicitar renovação</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Confirma renovação de empréstimo -->
+<div class="modal fade" id="modalConfirma" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0">
+            <div class="modal-header border-0">
+                <h1 class="modal-title modal-titulo m-auto" id="exampleModalLabel">Renovação realizada!</h1>
+            </div>
+            <div class="modal-body">
+                <img src="{% static '/images/modal-confirma.png' %}" class="modal-img" style="width: 300px;">
+                <p class="modal-texto">
+                    Sua renovação foi realizada com sucesso! Você pode visualizar a nova data de devolução do seu empréstimo em “Meus empréstimos”.
+                </p>
+            </div>
+            <div class="modal-footer modal-renovacao border-0">
+                <button type="button" class="btn modal-botao" data-bs-dismiss="modal" style="background-color: #DE0B0B">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Rejeita renovação de empréstimo -->
+<div class="modal fade" id="modalRejeita" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0">
+            <div class="modal-header border-0">
+                <h1 class="modal-title modal-titulo m-auto" id="exampleModalLabel">Renovação Rejeitada!</h1>
+            </div>
+            <div class="modal-body">
+                <img src="{% static '/images/modal-rejeita.png' %}" class="modal-img" style="width: 220px; height: 155px;">
+                <p class="modal-texto mt-4">
+                    Não foi possível realizar a renovação, você já atingiu o limite de renovações disponíveis.
+                </p>
+            </div>
+            <div class="modal-footer modal-renovacao border-0">
+                <button type="button" class="btn modal-botao" data-bs-dismiss="modal" style="background-color: #DE0B0B">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+</script>
 
 {% endblock %}

@@ -36,23 +36,23 @@
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
               <a class="dropdown-item dropdown-item--primeiro" href="#">
-                <ion-icon name="star-outline" class="account-icon"></ion-icon>
+                {% icon 'star' %}
                 Minha lista
               </a>
               <a class="dropdown-item" href="{% url 'loans' %}">
-                <ion-icon name="book-outline" class="account-icon"></ion-icon>
-                Meus empréstimos
+                {% icon 'book-open' %}
+                Empréstimos
               </a>
               <a class="dropdown-item" href="#">
-                <ion-icon name="calendar-outline" class="account-icon"></ion-icon>
+                {% icon 'calendar' %}
                 Reservas
               </a>
               <a class="dropdown-item" href="#">
-                <ion-icon name="settings-outline" class="account-icon"></ion-icon>
+                {% icon 'settings' %}
                 Configurações
               </a>
               <a class="dropdown-item dropdown-item--ultimo" href="#">
-                <ion-icon name="log-out-outline" class="account-icon"></ion-icon>
+                {% icon 'log-out' %}
                 Sair da conta
               </a>
             </div>

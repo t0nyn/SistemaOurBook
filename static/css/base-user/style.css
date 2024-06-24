@@ -130,6 +130,8 @@
     font-family: "Poppins", sans-serif !important;
     border-radius: 20px !important;
     border-width: 0.12rem !important;
+    min-width: 200px;
+    justify-content: space-between;
   }
   
   .chevron-icon {
@@ -171,6 +173,6 @@
     padding-bottom: 0.5rem !important;
   }
   
-  .account-icon{
-    font-size: 22px;
-  }
+  .dropdown-item svg {
+    width: 16px;
+  }  
