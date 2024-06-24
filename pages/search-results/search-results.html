@@ -211,7 +211,7 @@
 					</div>
 
 					<div class="tabela-leitor-botao">
-						<button class="botao-emprestimo">
+						<button class="botao-emprestimo" data-bs-toggle="modal" data-bs-target="#modalNovoEmprestimo">
 							Registrar novo empréstimo
 						</button>
 					</div>
@@ -294,6 +294,58 @@
 		integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
 		crossorigin="anonymous"></script>
 </body>
+
+<!-- Modal Novo empréstimo -->
+<div class="modal fade" id="modalNovoEmprestimo" data-bs-backdrop="static" tabindex="-1"
+	aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered modal-lg">
+		<div class="modal-content border-0 p-2">
+			<div class="modal-header border-0">
+				<h1 class="modal-title modal-titulo" id="exampleModalLabel">Novo empréstimo</h1>
+			</div>
+			<div class="modal-body">
+
+				<div class="tabela-leitor-info">
+					<h2 class="leitor-texto" style="font-size: 1rem;">Sophya Martins Ribeiro</h2>
+					<h2 class="leitor-texto" style="font-size: 1rem;">05678908765</h2>
+					<h2 class="leitor-texto" style="font-size: 1rem;">
+						sophyaribeiro@gmail.com
+					</h2>
+				</div>
+
+				<div class="pesquisa-exemplar" style="margin-top: 0.8rem;
+				padding-top: 1.5rem;
+				border-width: 2px 0px 0px 0px;
+				border-color: #3465e1;
+				border-style: solid;">
+
+					<div class="data-exemplar m-auto" style="width: 60%;">
+						<h2 class="pesquisa-texto p-0">Exemplar</h2>
+						<select class="form-select form-select-md mb-3 p-2">
+							<option selected>Selecione o livro para empréstimo</option>
+							<option value="1">O mágico de Oz</option>
+							<option value="2">Titanic</option>
+							<option value="3">Farenheit 451</option>
+						</select>
+					</div>
+
+
+					<div class="data-exemplar m-auto" style="width: 35%;">
+						<h2 class="pesquisa-texto p-0">Empréstimo</h2>
+						<input type="date" value="2024-06-20" class="data-input" />
+					</div>
+
+				</div>
+
+			</div>
+			<div class="modal-footer border-0">
+				<button type="submit" class="btn modal-botao" style="background-color: #1F9C51;" data-bs-dismiss="modal"
+					data-bs-toggle="modal" data-bs-target="#modalConfirma">Registrar empréstimo</button>
+			</div>
+		</div>
+	</div>
+</div>
+
 <script>
 	feather.replace();
 </script>
