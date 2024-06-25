@@ -214,6 +214,7 @@ def add_renovation(request):
             renovation_data = {
                 "id": renovation.id,
                 "renovation_date": renovation.renovation_date,
+                "expected_return_date": renovation.loan.expected_return_date,
                 "loan_id": renovation.loan.id,
                 "renovation_status": "Renovation Added Succesfully",
             }

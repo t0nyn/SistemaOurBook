@@ -1,7 +1,7 @@
-{% extends "base/index.html" %} 
-{% load static %} 
+{% extends "base/index.html" %}
+{% load static %}
 {% load icon %}
-{% block title %}Meus Empréstimos{% endblock %} 
+{% block title %}Meus Empréstimos{% endblock %}
 {% block css %}
 <link rel="stylesheet" href="{% static 'css/loans/style.css' %}" />
 {% endblock %}
@@ -64,14 +64,14 @@
                         </div>
                         <div>
                             <h2 class="texto-emprestimo mb-1">Emprestado em: {{ loan.borrowed_date|date:"d/m/Y" }}</h2>
-                            <h2 class="texto-devolucao" style="color: #1F9C51;">Devolver até: {{ loan.expected_return_date|date:"d/m/Y" }}</h2>
+                            <h2 id="texto-devolucao-{{ loan.id }}" class="texto-devolucao" style="color: #1F9C51;">Devolver até: {{ loan.expected_return_date|date:"d/m/Y" }}</h2>
                         </div>
                     </div>
 
                 </div>
 
                 <div class="container-botao">
-                    <button class="exemplar-botao" data-id="{{ loan.id }}" data-bs-toggle="modal" data-bs-target="#modalRenovacao">
+                    <button class="exemplar-botao" data-loan-id="{{ loan.id }}" data-bs-toggle="modal" data-bs-target="#modalRenovacao">
                         Solicitar renovação
                     </button>
 
@@ -128,8 +128,8 @@
 
                         </div>
                         <div>
-                            <h2 class="texto-emprestimo mb-1">Emprestado em: {{ loan.borrowed_date|date:"d-m-Y" }}</h2>
-                            <h2 class="texto-devolucao" style="font-weight: 400;">Devolvido em: {{ loan.return_date|date:"d-m-Y" }}</h2>
+                            <h2 class="texto-emprestimo mb-1">Emprestado em: {{ loan.borrowed_date|date:"d/m/Y" }}</h2>
+                            <h2 class="texto-devolucao" style="font-weight: 400;">Devolvido em: {{ loan.return_date|date:"d/m/Y" }}</h2>
                         </div>
                     </div>
 
@@ -159,8 +159,10 @@
                 </p>
             </div>
             <div class="modal-footer modal-renovacao border-0">
-                <button type="button" class="btn modal-botao" data-bs-dismiss="modal" style="background-color: #DE0B0B">Cancelar</button>
-                <button type="button" class="btn modal-botao" style="background-color: #1F9C51;"  data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#modalRejeita">Solicitar renovação</button>
+                <button type="button" class="btn modal-botao" data-bs-dismiss="modal"
+                    style="background-color: #DE0B0B">Cancelar</button>
+                <button id="botao-solicitar-renovacao" type="button" class="btn modal-botao"
+                    style="background-color: #1F9C51;" data-bs-dismiss="modal">Solicitar renovação</button>
             </div>
         </div>
     </div>
@@ -206,8 +208,42 @@
     </div>
 </div>
 
-<script>
+<script type="text/javascript">
+    const exemplarBotoes = document.querySelectorAll(".exemplar-botao");
+    const solicitarRenovacaoBotao = document.querySelector("#botao-solicitar-renovacao");
 
+    const modalConfirma = new bootstrap.Modal("#modalConfirma");
+    const modalRejeita = new bootstrap.Modal("#modalRejeita");
+
+    let loanId = null;
+
+    exemplarBotoes.forEach((exemplarBotao) => {
+        exemplarBotao.addEventListener("click", () => {
+            loanId = exemplarBotao.getAttribute("data-loan-id");
+        }, false);
+    });
+
+    solicitarRenovacaoBotao.addEventListener("click", async () => {
+        const response = await fetch("/add_renovation", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ "loan_id": loanId })
+        });
+
+        loanId = null;
+
+        if (response.ok) {
+            const content = await response.json();
+            const expectedReturnDateEl = document.querySelector(`#texto-devolucao-${content.loan_id}`);
+            const newReturnDate = new Date(content.expected_return_date).toLocaleDateString();
+
+            expectedReturnDateEl.innerHTML = `Devolver até: ${newReturnDate}`;
+
+            return modalConfirma.show();
+        }
+
+        modalRejeita.show();
+    }, false);
 </script>
 
 {% endblock %}
