@@ -11,6 +11,7 @@ from datetime import timedelta
 from django.utils import timezone
 
 from user.models import OurBookUser
+from book.models import BookCopy
 
 
 # Create your views here.
@@ -201,9 +202,14 @@ def add_renovation(request):
 
             renovation_count = Renovation.objects.filter(loan=loan).count()
 
+            if loan.book_copy.current_status == "RESERVED":
+                return JsonResponse(
+                    {"error": "Não foi possível realizar a renovação, o exemplar encontra-se reservado."}, status=403
+                )
+
             if renovation_count >= 2:
                 return JsonResponse(
-                    {"error": "Loan can only be renovated 2 times"}, status=400
+                    {"error": "Não foi possível realizar a renovação, você já atingiu o limite de renovações disponíveis."}, status=403
                 )
 
             loan.expected_return_date = timezone.now() + timedelta(days=15)

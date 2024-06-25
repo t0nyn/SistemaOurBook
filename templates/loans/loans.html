@@ -203,8 +203,8 @@
             </div>
             <div class="modal-body">
                 <img src="{% static '/images/modal-rejeita.png' %}" class="modal-img" style="width: 220px; height: 155px;">
-                <p class="modal-texto mt-4">
-                    Não foi possível realizar a renovação, você já atingiu o limite de renovações disponíveis.
+                <p id="texto-rejeicao-emprestimo" class="modal-texto mt-4">
+                    Não foi possível realizar a renovação.
                 </p>
             </div>
             <div class="modal-footer modal-renovacao border-0">
@@ -217,6 +217,7 @@
 <script type="text/javascript">
     const exemplarBotoes = document.querySelectorAll(".exemplar-botao");
     const solicitarRenovacaoBotao = document.querySelector("#botao-solicitar-renovacao");
+    const textoRejeicaoEmprestimoEl = document.querySelector("#texto-rejeicao-emprestimo");
 
     const modalConfirma = new bootstrap.Modal("#modalConfirma");
     const modalRejeita = new bootstrap.Modal("#modalRejeita");
@@ -236,21 +237,24 @@
             body: JSON.stringify({ "loan_id": loanId })
         });
 
+        const content = await response.json();
+
         loanId = null;
 
         if (response.ok) {
-            const content = await response.json();
             const expectedReturnDateEl = document.querySelector(`#texto-devolucao-${content.loan_id}`);
             const containerRenovacaoDatasEl = document.querySelector(`#container-renovacao-datas-${content.loan_id}`);
 
             let newReturnDate = getLocaleUTCDateString(new Date(content.expected_return_date));
             let newRenovationDate = getLocaleUTCDateString(new Date(content.renovation_date));
 
-            expectedReturnDateEl.innerHTML = `Devolver até: ${newReturnDate}`;
+            expectedReturnDateEl.textContent = `Devolver até: ${newReturnDate}`;
             containerRenovacaoDatasEl.innerHTML += `<h1 class="renovacao-texto mb-1">Renovado em ${newRenovationDate}</h1>`;
 
             return modalConfirma.show();
         }
+
+        textoRejeicaoEmprestimoEl.textContent = content.error;
 
         modalRejeita.show();
     }, false);
