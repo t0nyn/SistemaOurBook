@@ -336,7 +336,6 @@ main {
 	border-width: 1px;
 	border-color: #4242422c;
 	border-style: solid;
-	
 }
 
 .pesquisa-texto {
@@ -393,6 +392,33 @@ main {
 	font-size: 0.9rem;
 	font-family: "Poppins", sans-serif;
 	color: #000000e7;
+	padding: 0 !important;
+}
+
+.container-info{
+	margin-top: -1rem;
+	padding-bottom: 0.5rem;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	border-bottom: #000 1px solid;
+	margin-bottom: 1.5rem;
+	gap: 4rem;
+}
+
+.span-info{
+	font-weight: 500;
+	font-size: 0.9rem;
+	font-family: "Poppins", sans-serif;
+	color: #000;
+	padding-right: 0.5rem;
+}
+
+.texto-info{
+	font-weight: 400;
+	font-size: 0.9rem;
+	font-family: "Poppins", sans-serif;
+	color: #000;
 	padding: 0 !important;
 }
 
@@ -497,6 +523,14 @@ main {
 	display: flex;
 	flex-direction: row;
 	width: 100%;
+}
+
+.modal-fatura{
+	text-align: center;
+	padding: 0.7rem;
+	color: #000;
+	font-size: 0.9rem;
+	font-weight: 500;
 }
 
 .modal-botao {
