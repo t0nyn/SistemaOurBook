@@ -336,7 +336,6 @@ main {
 	border-width: 1px;
 	border-color: #4242422c;
 	border-style: solid;
-	
 }
 
 .pesquisa-texto {
@@ -396,6 +395,35 @@ main {
 	padding: 0 !important;
 }
 
+.container-info{
+	margin-top: -1.5rem;
+	margin-left: -1.5rem;
+	margin-right: -1.5rem;
+	padding-bottom: 0.5rem;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	border-bottom: #00000049 1px solid;
+	margin-bottom: 1.5rem;
+	gap: 4rem;
+}
+
+.span-info{
+	font-weight: 500;
+	font-size: 0.9rem;
+	font-family: "Poppins", sans-serif;
+	color: #000;
+	padding-right: 0.5rem;
+}
+
+.texto-info{
+	font-weight: 400;
+	font-size: 0.9rem;
+	font-family: "Poppins", sans-serif;
+	color: #000;
+	padding: 0 !important;
+}
+
 .tabela {
 	background-color: #fff;
 	border-color: rgba(0, 0, 0, 0.1);
@@ -407,7 +435,7 @@ main {
 	display: flex;
 	justify-content: flex-start;
 	gap: 2rem;
-	width: 70%;
+	width: 100%;
 }
 
 .leitor-texto {
@@ -497,6 +525,14 @@ main {
 	display: flex;
 	flex-direction: row;
 	width: 100%;
+}
+
+.modal-fatura{
+	text-align: center;
+	padding: 0.7rem;
+	color: #000;
+	font-size: 0.9rem;
+	font-weight: 500;
 }
 
 .modal-botao {
