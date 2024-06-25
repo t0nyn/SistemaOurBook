@@ -1,10 +1,10 @@
-<div class="exemplar col-3" style="width: auto;">
+<div class="exemplar">
     <a href="{% url 'book_page' id=book.id %}">
       <img src="{{ book.cover.url }}" class="exemplar-img">
     </a>
     <div class="exemplar-info">
-      <h2 class="exemplar-titulo">{{ book.name }}</h2>
+      <h2 class="exemplar-titulo m-0">{{ book.name }}</h2>
       <h3 class="exemplar-autor">{{ book.author }}</h3>
-      <h4 class="exemplar-disponibilidade">{{ book.copy_count }} Exemplares disponíveis</h4>
+      <h4 class="exemplar-disponibilidade">{{ book.copy_count }} {% if book.copy_count > 1 %} Exemplares disponíveis {% else %} Exemplar disponível {% endif %}</h4>
     </div>
 </div>

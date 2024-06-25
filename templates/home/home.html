@@ -52,11 +52,9 @@
         <h4 class="destaque-subtitulo">Mantenha-se atualizado com os últimos lançamentos de livros.</h4>
   
         <div class="container-recentes">
-          <div class="row">
-            {% for book in books %}
-              {% include 'components/linux.html' %}
-            {% endfor %}
-          </div>
+          {% for book in books %}
+            {% include 'components/linux.html' %}
+          {% endfor %}
         </div>
       </div>
   

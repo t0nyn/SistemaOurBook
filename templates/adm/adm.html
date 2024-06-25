@@ -1,4 +1,5 @@
 {% load static %}
+{% load icon %}
 <!DOCTYPE html>
 <html lang="pt-BR">
 	<head>
@@ -8,8 +9,8 @@
 		<link rel="icon" href="../img/logo-thin.png" />
 		<link rel="stylesheet" href="../../static/css/adm/style.css" />
 		{% load bootstrap5 %}
-  		{% bootstrap_css %}
-  		{% bootstrap_javascript %}
+		{% bootstrap_css %}
+		{% bootstrap_javascript %}
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
@@ -31,7 +32,7 @@
 		<menu id="sidebar" class="d-flex flex-column bg-white">
 			<div class="d-flex flex-column align-items-center mt-5 mb-4">
 				<a href="/">
-					<img id="sidebar-logo" src="../img/Logo-transparente.png" />
+					<img id="sidebar-logo" src="{% static '/images/Logo-transparente.png' %}" />
 				</a>
 
 				<div class="dropdown mt-4">
@@ -44,10 +45,7 @@
 						aria-expanded="false"
 					>
 						Biblioteca
-						<ion-icon
-							name="chevron-down"
-							class="chevron-icon"
-						></ion-icon>
+						{% icon 'chevron-down' class='chevron-icon' %}
 					</button>
 					<ul
 						id="dropdown-menu-logout"
@@ -79,10 +77,7 @@
 							<ion-icon name="book-outline"></ion-icon>
 							Exemplar
 						</div>
-						<ion-icon
-							class="collapse-chevron"
-							name="chevron-down-outline"
-						></ion-icon>
+						{% icon 'chevron-down' class='chevron-icon' %}
 					</button>
 					<div id="exemplar-collapse" class="ms-4 collapse">
 						<ul
@@ -129,10 +124,7 @@
 							<ion-icon name="person-circle-outline"></ion-icon>
 							Leitor
 						</div>
-						<ion-icon
-							class="collapse-chevron"
-							name="chevron-down-outline"
-						></ion-icon>
+						{% icon 'chevron-down' class='chevron-icon' %}
 					</button>
 					<div id="leitor-collapse" class="ms-4 collapse">
 						<ul
@@ -170,10 +162,7 @@
 							<ion-icon name="sync-circle-outline"></ion-icon>
 							Empréstimo
 						</div>
-						<ion-icon
-							class="collapse-chevron"
-							name="chevron-down-outline"
-						></ion-icon>
+						{% icon 'chevron-down' class='chevron-icon' %}
 					</button>
 				</li>
 			</ul>
