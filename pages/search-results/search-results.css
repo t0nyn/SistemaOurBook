@@ -370,3 +370,139 @@ main {
 	padding: 0.6rem !important;
 	font-size: 0.95rem !important;
 }
+
+/* MODAL VISUALIZAR EMPRÉSTIMO */
+
+.modal-titulo {
+	font-weight: 500 !important;
+	font-size: 1.15rem !important;
+	font-family: "Poppins", sans-serif !important;
+	color: #000 !important;
+	padding: 0 !important;
+}
+
+.modal-body {
+	display: flex;
+	flex-direction: column;
+	justify-content: center !important;
+}
+
+.modal-texto {
+	text-align: justify;
+	font-weight: 400;
+	font-size: 0.9rem;
+	font-family: "Poppins", sans-serif;
+	color: #000000e7;
+	padding: 0 !important;
+}
+
+.tabela {
+	background-color: #fff;
+	border-color: rgba(0, 0, 0, 0.1);
+	border: none !important;
+	width: 100%;
+}
+
+.tabela-leitor-info {
+	display: flex;
+	justify-content: flex-start;
+	gap: 2rem;
+	width: 70%;
+}
+
+.leitor-texto {
+	font-size: 0.9rem;
+	font-weight: 400;
+	font-family: "Poppins", sans-serif;
+}
+
+.tabela-leitor-botao {
+	width: 30%;
+	display: flex;
+	justify-content: flex-end;
+}
+
+.botao-emprestimo {
+	background-color: #3465e1;
+	color: #fff;
+	padding: 0.5rem 1rem 0.5rem 1rem;
+	font-size: 0.85rem;
+	font-weight: 500;
+	font-family: "Poppins", sans-serif;
+	border-radius: 30px;
+	border: none;
+}
+
+.table-striped > tbody > tr:nth-child(odd) > td,
+.table-striped > tbody > tr:nth-child(odd) > th {
+	background-color: #0061fc1a;
+}
+
+.tabela-titulo {
+	font-size: 0.95rem;
+	font-weight: 600;
+	letter-spacing: 0.1px;
+	font-family: "Montserrat", sans-serif;
+}
+
+.modal-tabela-nome {
+	font-size: 1rem;
+	font-weight: 500;
+	font-family: "Poppins", sans-serif;
+}
+
+.tabela-cabeçalho {
+	border-color: #3465e1;
+	border-width: 3px 0px 3px 0px;
+	border-style: solid;
+}
+
+.tabela-acao {
+	width: 15% !important;
+}
+
+.tabela-data {
+	width: 10% !important;
+}
+
+.tabela-hora {
+	width: 10% !important;
+}
+
+.tabela-executante {
+	width: 15% !important;
+}
+
+.tabela-vigencia {
+	width: 10% !important;
+}
+
+.tabela-status {
+	width: 5% !important;
+}
+
+.tabela-atraso {
+	width: 15% !important;
+}
+
+.tabela-texto {
+	font-size: 0.9rem;
+	padding: 0.7rem 0rem 0.7rem 0.7rem !important;
+	font-weight: 400;
+	font-family: "Poppins", sans-serif;
+}
+
+.modal-footer {
+	gap: 1rem;
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+}
+
+.modal-botao {
+	width: 35%;
+	border-radius: 4px !important;
+	color: #fff !important;
+	padding: 0.6rem !important;
+	font-size: 0.95rem !important;
+}
