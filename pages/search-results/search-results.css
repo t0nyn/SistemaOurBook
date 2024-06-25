@@ -396,10 +396,11 @@ main {
 }
 
 .container-info{
-	margin-top: -1.5rem;
+	margin-top: -3rem;
 	margin-left: -1.5rem;
 	margin-right: -1.5rem;
-	padding-bottom: 0.5rem;
+	padding-top: 0 !important;
+	padding-bottom: 1rem !important;
 	display: flex;
 	flex-direction: row;
 	justify-content: flex-start;
