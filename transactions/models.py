@@ -15,5 +15,5 @@ class Loan(models.Model):
 
 
 class Renovation(models.Model):
-    loan = models.ForeignKey(Loan, on_delete=models.CASCADE)
+    loan = models.ForeignKey(Loan, related_name='renovations', on_delete=models.CASCADE)
     renovation_date = models.DateField(auto_now_add=True)
