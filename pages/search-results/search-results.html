@@ -257,7 +257,7 @@
 							<td class="tabela-texto">12/05/2023</td>
 							<td class="tabela-texto">12/06/2023</td>
 							<td>
-								<a href="">
+								<a href="" data-bs-toggle="modal" data-bs-target="#modalVisualizarEmprestimo">
 									<i data-feather="edit" class="edit-icon"></i>
 								</a>
 							</td>
@@ -302,6 +302,7 @@
 		<div class="modal-content border-0 p-2">
 			<div class="modal-header border-0">
 				<h1 class="modal-title modal-titulo" id="exampleModalLabel">Novo empréstimo</h1>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 			</div>
 			<div class="modal-body">
 
@@ -341,6 +342,96 @@
 			<div class="modal-footer border-0">
 				<button type="submit" class="btn modal-botao" style="background-color: #1F9C51;" data-bs-dismiss="modal"
 					data-bs-toggle="modal" data-bs-target="#modalConfirma">Registrar empréstimo</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Modal Visualizar empréstimo -->
+<div class="modal fade" id="modalVisualizarEmprestimo" tabindex="-1" aria-labelledby="exampleModalLabel"
+	aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered modal-xl">
+		<div class="modal-content border-0 p-2">
+			<div class="modal-header border-0">
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+
+				<section>
+					
+				</section>
+
+
+				<section class="tabela">
+					<h1 class="modal-tabela-nome">Histórico de transações</h1>
+					<table class="table table-striped table-borderless">
+
+						<thead>
+							<tr class="tabela-cabeçalho">
+								<th scope="col" class="tabela-titulo tabela-acao">
+									Ação
+								</th>
+								<th scope="col" class="tabela-titulo tabela-data">
+									Data
+								</th>
+								<th scope="col" class="tabela-titulo tabela-hora">
+									Hora
+								</th>
+								<th scope="col" class="tabela-titulo tabela-executante">
+									Executante
+								</th>
+								<th scope="col" class="tabela-titulo tabela-vigencia">
+									Vigência
+								</th>
+								<th scope="col" class="tabela-titulo tabela-status">
+									Status
+								</th>
+								<th scope="col" class="tabela-titulo tabela-atraso">
+									Dias de atraso
+								</th>
+							</tr>
+						</thead>
+						<tbody class="table-group-divider">
+
+							<tr>
+								<td class="tabela-texto" style="padding-left: 1.5rem">
+									Empréstimo
+								</td>
+								<td class="tabela-texto">
+									12/05/2023
+								</td>
+								<td class="tabela-texto">
+									12:05:07
+								</td>
+								<td class="tabela-texto">Biblioteca</td>
+								<td class="tabela-texto">27/05/2023</td>
+								<td class="tabela-texto" style="color: #1F9C51; font-weight: bold;">Regular</td>
+								<td class="tabela-texto">0</td>
+							</tr>
+
+							<tr>
+								<td class="tabela-texto" style="padding-left: 1.5rem">
+									Renovação
+								</td>
+								<td class="tabela-texto">
+									12/05/2023
+								</td>
+								<td class="tabela-texto">
+									12:05:07
+								</td>
+								<td class="tabela-texto">Sophya Ribeiro</td>
+								<td class="tabela-texto">27/05/2023</td>
+								<td class="tabela-texto" style="color: #1F9C51; font-weight: bold;">Regular</td>
+								<td class="tabela-texto">0</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+
+			</div>
+			<div class="modal-footer border-0">
+				<button type="submit" class="btn modal-botao" style="background-color: #1F9C51;" data-bs-dismiss="modal"
+					data-bs-toggle="modal" data-bs-target="#modalConfirma">Registrar devolução</button>
 			</div>
 		</div>
 	</div>
