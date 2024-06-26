@@ -45,7 +45,7 @@
 						aria-expanded="false"
 					>
 						Biblioteca
-						{% icon 'chevron-down' class='chevron-icon' %}
+						{% icon 'chevron-down' class='chevron-icon collapse-chevron' %}
 					</button>
 					<ul
 						id="dropdown-menu-logout"
@@ -53,10 +53,7 @@
 						aria-labelledby="dropdownMenuButton"
 					>
 						<a class="dropdown-item" href="{% url 'logout' %}">
-							<ion-icon
-								name="log-out-outline"
-								class="account-icon"
-							></ion-icon>
+							{% icon 'log-out' class='account-icon' %}
 							Sair da conta
 						</a>
 					</ul>
@@ -74,10 +71,10 @@
 						<div
 							class="sidebar-collapse-text d-flex align-items-center gap-2"
 						>
-							<ion-icon name="book-outline"></ion-icon>
+							{% icon 'book' class='sidebar-icon' %}
 							Exemplar
 						</div>
-						{% icon 'chevron-down' class='chevron-icon' %}
+						{% icon 'chevron-down' class='chevron-icon collapse-chevron' %}
 					</button>
 					<div id="exemplar-collapse" class="ms-4 collapse">
 						<ul
@@ -121,10 +118,10 @@
 						<div
 							class="sidebar-collapse-text d-flex align-items-center gap-2"
 						>
-							<ion-icon name="person-circle-outline"></ion-icon>
+							{% icon 'user' class='sidebar-icon' %}
 							Leitor
 						</div>
-						{% icon 'chevron-down' class='chevron-icon' %}
+						{% icon 'chevron-down' class='chevron-icon collapse-chevron' %}
 					</button>
 					<div id="leitor-collapse" class="ms-4 collapse">
 						<ul
@@ -159,10 +156,10 @@
 						<div
 							class="sidebar-collapse-text d-flex align-items-center gap-2"
 						>
-							<ion-icon name="sync-circle-outline"></ion-icon>
+							{% icon 'refresh-ccw' class='sidebar-icon' %}
 							Empréstimo
 						</div>
-						{% icon 'chevron-down' class='chevron-icon' %}
+						{% icon 'chevron-down' class='chevron-icon collapse-chevron' %}
 					</button>
 				</li>
 			</ul>
@@ -261,7 +258,7 @@
 									class="btn rounded-circle"
 									type="submit"
 								>
-									<ion-icon name="search-outline"></ion-icon>
+									{% icon 'search' class='sidebar-icon' %}
 								</button>
 							</div>
 						</form>
@@ -333,20 +330,20 @@
 									{{ loan.book_copy.book.name }}
 								</td>
 								<td class="tabela-texto">{{ loan.book_copy.book.author }}</td>
-								<td class="tabela-texto">{{ loan.borrowed_date|date:"d-m-Y" }}</td>
-								<td class="tabela-texto">{{ loan.expected_return_date|date:"d-m-Y" }}</td>
+								<td class="tabela-texto">{{ loan.borrowed_date|date:"d/m/Y" }}</td>
+								<td class="tabela-texto">{{ loan.expected_return_date|date:"d/m/Y" }}</td>
 								<td>
 									<a href="">
-										<ion-icon
-											name="create-outline"
-											class="edit-icon"
-										></ion-icon>
+										{% icon 'edit' class='edit-icon' %}
 									</a>
 								</td>
 							</tr>
 							{% endfor %}
 						</tbody>
 					</table>
+					{% if past_loans.count == 0 %}
+					<p class="text-center" style="color: #00000073;">Não há empréstimos recentes.</p>
+					{% endif %}
 				</section>
 
 				<section class="tabela mt-5">
@@ -427,6 +424,9 @@
 							{% endfor %}
 						</tbody>
 					</table>
+					{% if loans.count == 0 %}
+					<p class="text-center" style="color: #00000073;">Não há devoluções recentes.</p>
+					{% endif %}
 				</section>
 			</section>
 		</main>

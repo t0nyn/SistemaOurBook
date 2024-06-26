@@ -55,8 +55,7 @@ main {
 }
 
 .chevron-icon {
-	font-size: 19px;
-	padding-left: 0.5rem;
+	width: 17px;
 }
 
 #dropdown-menu-logout {
@@ -75,7 +74,7 @@ main {
 }
 
 .account-icon {
-	font-size: 18px;
+	width: 15px;
 }
 
 .sidebar-collapse-text {
@@ -144,6 +143,10 @@ main {
 
 #search-bar {
 	width: 420px;
+}
+
+.sidebar-icon {
+	width: 17px;
 }
 
 #search-filter-select {
@@ -284,7 +287,7 @@ main {
 }
 
 .edit-icon {
-	font-size: 18px;
+	width: 32px;
 	color: black;
 	padding-right: 1rem;
 }
