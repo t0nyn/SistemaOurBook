@@ -229,6 +229,17 @@ main {
 	border: none;
 }
 
+.botao-devolucao {
+	background-color:rgb(23, 193, 71);
+	color: #fff;
+	padding: 0.2rem 0.8rem 0.2rem 0.8rem;
+	font-size: 0.7rem;
+	font-weight: 500;
+	font-family: "Poppins", sans-serif;
+	border-radius: 4px;
+	border: none;
+}
+
 .table-striped>tbody>tr:nth-child(odd)>td,
 .table-striped>tbody>tr:nth-child(odd)>th {
 	background-color: #0061fc1a;
@@ -279,7 +290,7 @@ main {
 }
 
 .tabela-editar {
-	width: 1% !important;
+	width: 2% !important;
 }
 
 .tabela-texto {
