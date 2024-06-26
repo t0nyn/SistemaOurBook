@@ -218,7 +218,7 @@
 				</div>
 
 				<table class="table table-striped table-borderless">
-					<h1 class="tabela-nome">Histórico de empréstimos</h1>
+					<h1 class="tabela-nome">Empréstimos</h1>
 					<thead>
 						<tr class="tabela-cabeçalho">
 							<th scope="col" class="tabela-titulo tabela-codigo">
@@ -257,9 +257,10 @@
 							<td class="tabela-texto">12/05/2023</td>
 							<td class="tabela-texto">12/06/2023</td>
 							<td>
-								<a href="" data-bs-toggle="modal" data-bs-target="#modalVisualizarEmprestimo">
-									<i data-feather="edit" class="edit-icon"></i>
-								</a>
+								<button class="botao-devolucao">
+									Devolver
+								</button>
+								
 							</td>
 						</tr>
 
@@ -277,14 +278,93 @@
 							<td class="tabela-texto">12/05/2023</td>
 							<td class="tabela-texto">12/06/2023</td>
 							<td>
-								<a href="" data-bs-toggle="modal" data-bs-target="#modalVisualizarEmprestimo">
-									<i data-feather="edit" class="edit-icon"></i>
-								</a>
+								<button class="botao-devolucao">
+									Devolver
+								</button>
 							</td>
 						</tr>
 
 					</tbody>
 				</table>
+
+				<section class="tabela">
+					<table class="table table-striped table-borderless">
+						<h1 class="tabela-nome" style="border-width: 0.09px 0rem 0px 0px;
+						border-style: solid;
+						border-color: rgba(0, 0, 0, 0.15);">Devoluções</h1>
+						<thead>
+							<tr class="tabela-cabeçalho">
+								<th scope="col" class="tabela-titulo tabela-codigo">
+									Código
+								</th>
+								<th scope="col" class="tabela-titulo tabela-leitor">
+									Leitor(a)
+								</th>
+								<th scope="col" class="tabela-titulo tabela-exemplar">
+									Exemplar
+								</th>
+								<th scope="col" class="tabela-titulo tabela-autor">
+									Autor(a)
+								</th>
+								<th scope="col" class="tabela-titulo tabela-emprestimo">
+									Empréstimo
+								</th>
+								<th scope="col" class="tabela-titulo tabela-validade">
+									Devolução
+								</th>
+							</tr>
+						</thead>
+						<tbody class="table-group-divider">
+														
+							<tr>
+								<td class="tabela-texto" style="padding-left: 1.5rem">
+									012345
+								</td>
+								<td class="tabela-texto">
+									Sophya Martins Ribeiro
+								</td>
+								<td class="tabela-texto">
+									The Witcher: A estrela do destino
+								</td>
+								<td class="tabela-texto">Andrzej Sapkowski</td>
+								<td class="tabela-texto">12/05/2023</td>
+								<td class="tabela-texto">12/06/2023</td>
+								
+							</tr>
+							<tr>
+								<td class="tabela-texto" style="padding-left: 1.5rem">
+									012345
+								</td>
+								<td class="tabela-texto">
+									Sophya Martins Ribeiro
+								</td>
+								<td class="tabela-texto">
+									The Witcher: A estrela do destino
+								</td>
+								<td class="tabela-texto">Andrzej Sapkowski</td>
+								<td class="tabela-texto">12/05/2023</td>
+								<td class="tabela-texto">12/06/2023</td>
+								
+							</tr>
+							<tr>
+								<td class="tabela-texto" style="padding-left: 1.5rem">
+									012345
+								</td>
+								<td class="tabela-texto">
+									Sophya Martins Ribeiro
+								</td>
+								<td class="tabela-texto">
+									The Witcher: A estrela do destino
+								</td>
+								<td class="tabela-texto">Andrzej Sapkowski</td>
+								<td class="tabela-texto">12/05/2023</td>
+								<td class="tabela-texto">12/06/2023</td>
+								
+							</tr>
+							
+						</tbody>
+					</table>
+				</section>
 			</section>
 		</section>
 	</main>
