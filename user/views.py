@@ -3,6 +3,7 @@ from django.http.response import HttpResponse
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as login_user
+from django.contrib.auth import logout as logout_user
 from django.contrib.auth.decorators import login_required
 from user.models import OurBookUser
 from book.models import Book
@@ -39,3 +40,9 @@ def login(request):
         context["login_fail"] = True
 
     return render(request, "user/login.html", context=context)
+
+
+def logout(request):
+    logout_user(request)
+
+    return redirect(resolve_url("login"))
