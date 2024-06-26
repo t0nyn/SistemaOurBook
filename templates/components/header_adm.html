@@ -1,0 +1,55 @@
+{% load static %}
+{% load icon %}
+
+<nav id="menu-superior" class="navbar navbar-expand bg-white px-4">
+	<div class="container-fluid">
+		<div class="collapse navbar-collapse">
+			<ul class="navbar-nav mb-0 me-auto">
+				<li
+					class="nav-item {% if 'home' in request.path %}border-bottom border-3 border-primary{% else %}text-dark{% endif %} menu-superior-item px-3">
+					<a class="nav-link {% if 'home' in request.path %}active{% else %}text-dark{% endif %} p-1 text-center"
+						aria-current="page" href="{% url 'home' %}">
+						Início
+					</a>
+				</li>
+				<li class="nav-item menu-superior-item px-3">
+					<a class="nav-link text-dark p-1 text-center" href="#">
+						Registrar Empréstimo
+					</a>
+				</li>
+				<li class="nav-item menu-superior-item px-3">
+					<a class="nav-link text-dark p-1 text-center" href="#">
+						Registrar Devolução
+					</a>
+				</li>
+			</ul>
+			<form class="d-flex" role="search" action="{% url 'search_user_loans' %}" method="POST">
+				{% csrf_token %}
+				<div class="input-group border border-secondary rounded-pill" id="search-bar">
+					<select class="form-select rounded-pill border-0 rounded-end shadow-none bg-body-secondary"
+						aria-label="Default select example" id="search-filter-select">
+						<option class="bg-white" selected>
+							Empréstimos
+						</option>
+						<option class="bg-white" value="1">
+							Exemplares
+						</option>
+						<option class="bg-white" value="2">
+							Autores
+						</option>
+						<option class="bg-white" value="3">
+							Leitores
+						</option>
+					</select>
+					<input aria-label="Pesquisar"
+						class="form-control border-top-0 border-end-0 border-bottom-0 border-secondary shadow-none"
+						placeholder="Pesquisar..." type="search" id="search-input" name="search-input"
+						oninput="mascaraCPF(this)" maxlength="14" />
+					<button class="btn rounded-circle" type="submit">
+						{% icon 'search' class='sidebar-icon' %}
+					</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</nav>
