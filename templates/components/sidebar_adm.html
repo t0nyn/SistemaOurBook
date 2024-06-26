@@ -3,7 +3,7 @@
 
 <menu id="sidebar" class="d-flex flex-column bg-white">
 	<div class="d-flex flex-column align-items-center mt-5 mb-4">
-		<a href="/">
+		<a href="{% url 'home' %}">
 			<img id="sidebar-logo" src="{% static '/images/Logo-transparente.png' %}" />
 		</a>
 
@@ -156,11 +156,4 @@
 			false
 		);
 	});
-	function mascaraCPF(cpf) {
-		cpf.value = cpf.value
-			.replace(/\D/g, '')
-			.replace(/(\d{3})(\d)/, '$1.$2')
-			.replace(/(\d{3})(\d)/, '$1.$2')
-			.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
-	}
 </script>

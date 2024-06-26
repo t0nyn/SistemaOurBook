@@ -28,23 +28,25 @@
 				<div class="input-group border border-secondary rounded-pill" id="search-bar">
 					<select class="form-select rounded-pill border-0 rounded-end shadow-none bg-body-secondary"
 						aria-label="Default select example" id="search-filter-select">
-						<option class="bg-white" selected>
-							Empréstimos
-						</option>
-						<option class="bg-white" value="1">
-							Exemplares
+						<option class="bg-white" value="1" selected>
+							Leitores
 						</option>
 						<option class="bg-white" value="2">
-							Autores
+							Empréstimos
 						</option>
 						<option class="bg-white" value="3">
-							Leitores
+							Exemplares
+						</option>
+						<option class="bg-white" value="4">
+							Autores
 						</option>
 					</select>
 					<input aria-label="Pesquisar"
+						pattern=".{14}"
+						title="Insira o CPF completo"
 						class="form-control border-top-0 border-end-0 border-bottom-0 border-secondary shadow-none"
 						placeholder="Pesquisar..." type="search" id="search-input" name="search-input"
-						oninput="mascaraCPF(this)" maxlength="14" />
+						oninput="mascaraCPF(this)" maxlength="14" value="{{ search_input|default:"" }}" />
 					<button class="btn rounded-circle" type="submit">
 						{% icon 'search' class='sidebar-icon' %}
 					</button>
@@ -53,3 +55,13 @@
 		</div>
 	</div>
 </nav>
+
+<script>
+	function mascaraCPF(cpf) {
+		cpf.value = cpf.value
+			.replace(/\D/g, '')
+			.replace(/(\d{3})(\d)/, '$1.$2')
+			.replace(/(\d{3})(\d)/, '$1.$2')
+			.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+	}
+</script>

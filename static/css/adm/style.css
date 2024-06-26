@@ -236,6 +236,7 @@ main {
 	font-weight: 600;
 	letter-spacing: 0.1px;
 	font-family: "Montserrat", sans-serif;
+	padding-left: 1.5rem !important;
 }
 
 .tabela-nome {

@@ -6,7 +6,7 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>OurBook - Página Inicial</title>
-		<link rel="icon" href="../img/logo-thin.png" />
+		<link rel="icon" type="image/x-icon" href="{% static 'images/book.ico' %}">
 		<link rel="stylesheet" href="../../static/css/adm/style.css" />
 		{% load bootstrap5 %}
 		{% bootstrap_css %}
@@ -91,7 +91,7 @@
 									{{ loan.id }}
 								</td>
 								<td class="tabela-texto">
-									{{ loan.borrower }}
+									{{ loan.borrower.first_name }} {{ loan.borrower.last_name }}
 								</td>
 								<td class="tabela-texto">
 									{{ loan.book_copy.book.name }}

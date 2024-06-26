@@ -1,0 +1,114 @@
+{% load static %}
+{% load icon %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>OurBook - Página Inicial</title>
+	<link rel="icon" type="image/x-icon" href="{% static 'images/book.ico' %}">
+	<link rel="stylesheet" href="../../static/css/adm/style.css" />
+	{% load bootstrap5 %}
+	{% bootstrap_css %}
+	{% bootstrap_javascript %}
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link
+		href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+		rel="stylesheet" />
+	<link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet" />
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+		rel="stylesheet" />
+</head>
+
+<body>
+	{% include 'components/sidebar_adm.html' %}
+	<main>
+		{% include 'components/header_adm.html' %}
+		<section class="conteudo">
+			<div>
+				<h1 class="texto-resultados">
+					{% if user %}
+					Resultados encontrados para
+					{% else %}
+					Não foram encontrados para
+					{% endif  %}
+					<span class="span-texto-resultados">{{ user.cpf|default:search_input }}</span>
+				</h1>
+			</div>
+
+			{% if user %}
+			<section class="tabela">
+				<div class="pesquisa-leitor">
+					<div class="tabela-leitor-info">
+						<h2 class="leitor-texto">{{ user.first_name }} {{ user.last_name }}</h2>
+						<h2 class="leitor-texto">{{ user.cpf }}</h2>
+						<h2 class="leitor-texto">{{ user.email }}</h2>
+					</div>
+
+					<div class="tabela-leitor-botao">
+						<button class="botao-emprestimo" data-bs-toggle="modal" data-bs-target="#modalNovoEmprestimo">
+							Registrar novo empréstimo
+						</button>
+					</div>
+				</div>
+
+				<table class="table table-striped table-borderless">
+					<h1 class="tabela-nome">Histórico de empréstimos</h1>
+					<thead>
+						<tr class="tabela-cabeçalho">
+							<th scope="col" class="tabela-titulo tabela-codigo">
+								Código
+							</th>
+							<th scope="col" class="tabela-titulo tabela-leitor">
+								Leitor(a)
+							</th>
+							<th scope="col" class="tabela-titulo tabela-exemplar">
+								Exemplar
+							</th>
+							<th scope="col" class="tabela-titulo tabela-autor">
+								Autor(a)
+							</th>
+							<th scope="col" class="tabela-titulo tabela-emprestimo">
+								Empréstimo
+							</th>
+							<th scope="col" class="tabela-titulo tabela-validade">
+								Validade
+							</th>
+							<th scope="col" class="tabela-titulo tabela-editar"></th>
+						</tr>
+					</thead>
+					<tbody class="table-group-divider">
+						{% for loan in loans %}
+						<tr>
+							<td class="tabela-texto">
+								{{ loan.id }}
+							</td>
+							<td class="tabela-texto">
+								{{ loan.borrower.first_name }} {{ loan.borrower.last_name }}
+							</td>
+							<td class="tabela-texto">
+								{{ loan.book_copy.book.name }}
+							</td>
+							<td class="tabela-texto">{{ loan.book_copy.book.author }}</td>
+							<td class="tabela-texto">{{ loan.borrowed_date|date:"d/m/Y" }}</td>
+							<td class="tabela-texto">{{ loan.return_date|default_if_none:loan.expected_return_date|date:"d/m/Y" }}</td>
+							<td>
+								<a href="">
+									{% icon 'edit' class='edit-icon' %}
+								</a>
+							</td>
+						</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</section>
+			{% endif  %}
+		</section>
+	</main>
+</body>
+
+</html>

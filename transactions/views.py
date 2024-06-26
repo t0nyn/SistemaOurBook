@@ -27,19 +27,24 @@ def loans(request):
 
 def search_user_loans(request):
     if request.method == "POST":
-        cpf = request.POST.get("search-input")
-        try:
-            user = OurBookUser.objects.get(cpf=cpf)
-        except OurBookUser.DoesNotExist:
-            return redirect(resolve_url("home"))
+        search_input = request.POST.get("search-input")
 
-        past_loans = Loan.objects.filter(return_date__isnull=True, borrower=user)
-        loans = Loan.objects.filter(return_date__isnull=False, borrower=user)
+        try:
+            user = OurBookUser.objects.get(cpf=search_input)
+        except OurBookUser.DoesNotExist:
+            user = None
+
+        loans = Loan.objects.filter(borrower=user)
+
         context = {
-            "past_loans": past_loans,
+            "user": user,
             "loans": loans,
+            "search_input": search_input
         }
-        return render(request, "adm/adm.html", context=context)
+
+        return render(request, "adm/search_user_loans.html", context=context)
+    
+    return redirect(resolve_url("home"))
 
 
 def loan_item(request, id):
