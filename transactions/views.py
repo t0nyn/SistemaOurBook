@@ -205,7 +205,7 @@ def add_renovation(request):
             if loan.book_copy.current_status == "RESERVED":
                 return JsonResponse(
                     {
-                        "error": "Não foi possível renovar o empréstimo. O livro foi reservado por outro usuário."
+                        "error": "Não foi possível realizar a renovação, o exemplar encontra-se reservado."
                     },
                     status=403,
                 )
@@ -213,7 +213,7 @@ def add_renovation(request):
             if renovation_count >= 2:
                 return JsonResponse(
                     {
-                        "error": "Não foi possível renovar o empréstimo. O número máximo de renovações foi atingido(2)."
+                        "error": "Não foi possível realizar a renovação, você já atingiu o limite de renovações disponíveis."
                     },
                     status=403,
                 )
