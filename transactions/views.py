@@ -204,12 +204,24 @@ def add_renovation(request):
 
             if loan.book_copy.current_status == "RESERVED":
                 return JsonResponse(
-                    {"error": "Não foi possível realizar a renovação, o exemplar encontra-se reservado."}, status=403
+                    {
+                        "error": "It was not possible to renew the item. It is currently reserved."
+                    },
+                    status=403,
                 )
 
             if renovation_count >= 2:
                 return JsonResponse(
-                    {"error": "Não foi possível realizar a renovação, você já atingiu o limite de renovações disponíveis."}, status=403
+                    {
+                        "error": "It was not possible to renew the item. You reached the maximum number of renewals(2)."
+                    },
+                    status=403,
+                )
+
+            if timezone.now().date() != loan.expected_return_date:
+                return JsonResponse(
+                    {"error": "It is only possible to renew the loan on the last day."},
+                    status=403,
                 )
 
             loan.expected_return_date = timezone.now() + timedelta(days=15)
