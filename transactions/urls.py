@@ -10,4 +10,5 @@ urlpatterns = [
     path("add_loan", views.add_loan, name="add_loan"),
     path("return_book", views.return_book, name="return_book"),
     path("add_renovation", views.add_renovation, name="add_renovation"),
+    path("search_user_loans", views.search_user_loans, name="search_user_loans"),
 ]

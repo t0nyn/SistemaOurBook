@@ -200,12 +200,12 @@
 					<div class="collapse navbar-collapse">
 						<ul class="navbar-nav mb-0 me-auto">
 							<li
-								class="nav-item menu-superior-item border-bottom border-3 border-primary px-3"
+								class="nav-item {% if 'home' in request.path %}border-bottom border-3 border-primary{% else %}text-dark{% endif %} menu-superior-item px-3"
 							>
 								<a
-									class="nav-link active p-1 text-center"
+									class="nav-link {% if 'home' in request.path %}active{% else %}text-dark{% endif %} p-1 text-center"
 									aria-current="page"
-									href="#"
+									href="{% url 'home' %}"
 								>
 									Início
 								</a>
@@ -227,7 +227,8 @@
 								</a>
 							</li>
 						</ul>
-						<form class="d-flex" role="search">
+						<form class="d-flex" role="search" action="{% url 'search_user_loans' %}" method="POST">
+							{% csrf_token %}
 							<div
 								class="input-group border border-secondary rounded-pill"
 								id="search-bar"
@@ -256,6 +257,9 @@
 									placeholder="Pesquisar..."
 									type="search"
 									id="search-input"
+									name="search-input"
+									oninput="mascaraCPF(this)"
+									maxlength="14"
 								/>
 								<button
 									class="btn rounded-circle"
@@ -466,6 +470,13 @@
                     false
                 );
             });
+			function mascaraCPF(cpf) {
+				cpf.value = cpf.value
+					.replace(/\D/g, '') 
+					.replace(/(\d{3})(\d)/, '$1.$2')
+					.replace(/(\d{3})(\d)/, '$1.$2')
+					.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+			}
         </script>
 	</body>
 </html>

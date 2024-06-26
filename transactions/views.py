@@ -1,5 +1,5 @@
 import json
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, redirect, render, resolve_url
 from django.contrib.auth.decorators import login_required
 from book.models import Book, BookCopy
 from transactions.models import Loan, Renovation
@@ -23,6 +23,23 @@ def loans(request):
     )
     context = {"loans": loans, "past_loans": past_loans}
     return render(request, "loans/loans.html", context=context)
+
+
+def search_user_loans(request):
+    if request.method == "POST":
+        cpf = request.POST.get("search-input")
+        try:
+            user = OurBookUser.objects.get(cpf=cpf)
+        except OurBookUser.DoesNotExist:
+            return redirect(resolve_url("home"))
+
+        past_loans = Loan.objects.filter(return_date__isnull=True, borrower=user)
+        loans = Loan.objects.filter(return_date__isnull=False, borrower=user)
+        context = {
+            "past_loans": past_loans,
+            "loans": loans,
+        }
+        return render(request, "adm/adm.html", context=context)
 
 
 def loan_item(request, id):

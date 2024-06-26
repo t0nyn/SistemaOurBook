@@ -3,4 +3,4 @@ from django.contrib.auth.models import AbstractUser
 
 
 class OurBookUser(AbstractUser):
-    cpf = models.CharField(max_length=11, primary_key=True)
+    cpf = models.CharField(max_length=14, primary_key=True)
