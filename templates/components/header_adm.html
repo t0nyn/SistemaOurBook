@@ -23,7 +23,7 @@
 					</a>
 				</li>
 			</ul>
-			<form class="d-flex" role="search" action="{% url 'search_user_loans' %}" method="POST">
+			<form class="d-flex" role="search" action="{% url 'search_user_loans' %}" method="GET">
 				{% csrf_token %}
 				<div class="input-group border border-secondary rounded-pill" id="search-bar">
 					<select class="form-select rounded-pill border-0 rounded-end shadow-none bg-body-secondary"

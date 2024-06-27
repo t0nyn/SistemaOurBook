@@ -25,9 +25,10 @@ def loans(request):
     return render(request, "loans/loans.html", context=context)
 
 
+@csrf_exempt
 def search_user_loans(request):
-    if request.method == "POST":
-        cpf = request.POST.get("search-input")
+    if request.method == "GET":
+        cpf = request.GET.get("search-input")
         try:
             user = OurBookUser.objects.get(cpf=cpf)
         except OurBookUser.DoesNotExist:
@@ -201,6 +202,21 @@ def return_book(request):
             return JsonResponse({"error": "Invalid JSON"}, status=400)
         except Exception as e:
             return JsonResponse({"error": str(e)}, status=500)
+
+
+@csrf_exempt
+def return_book_id(request, id):
+    loan = Loan.objects.get(id=id)
+    book_copy = loan.book_copy
+
+    book_copy.current_status = "AVAILABLE"
+    book_copy.save()
+    loan.return_date = timezone.now()
+    loan.save()
+
+    return redirect(
+        resolve_url("search_user_loans") + f"?search-input={loan.borrower.cpf}"
+    )
 
 
 @csrf_exempt
