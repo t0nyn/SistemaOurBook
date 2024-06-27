@@ -84,9 +84,12 @@
                 </div>
 
             </div>
+            {% endfor %}
 
+            {% if loans.count == 0 %}
+            <p style="color: #00000073;">Não há empréstimos vigentes.</p>
+            {% endif %}
         </div>
-        {% endfor %}
 
         <div class="historico-emprestimos">
 
@@ -144,6 +147,9 @@
             </div>
             {% endfor %}
 
+            {% if past_loans.count == 0 %}
+            <p style="color: #00000073;">Você ainda não realizou devolução.</p>
+            {% endif %}
         </div>
 
 
