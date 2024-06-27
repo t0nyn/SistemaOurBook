@@ -26,7 +26,7 @@
 			<form class="d-flex" role="search" action="{% url 'search_user_loans' %}" method="GET">
 				{% csrf_token %}
 				<div class="input-group border border-secondary rounded-pill" id="search-bar">
-					<select class="form-select rounded-pill border-0 rounded-end shadow-none bg-body-secondary"
+					<select class="form-select rounded-pill border-0 rounded-end shadow-none"
 						aria-label="Default select example" id="search-filter-select">
 						<option class="bg-white" value="1" selected>
 							Leitores
@@ -44,7 +44,7 @@
 					<input aria-label="Pesquisar"
 						pattern=".{14}"
 						title="Insira o CPF completo"
-						class="form-control border-top-0 border-end-0 border-bottom-0 border-secondary shadow-none"
+						class="form-control border-top-0 border-end-0 border-bottom-0 border-secondary shadow-none ms-0"
 						placeholder="Pesquisar..." type="search" id="search-input" name="search-input"
 						oninput="mascaraCPF(this)" maxlength="14" value="{{ search_input|default:"" }}" />
 					<button class="btn rounded-circle" type="submit">

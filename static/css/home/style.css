@@ -109,7 +109,7 @@ header {
   display: flex;
   flex-direction: column;
   border-radius: 20px;
-  width: auto;
+  width: 18%;
   padding-top: 0.5rem;
   background-color: #FFF;
   align-items: center;

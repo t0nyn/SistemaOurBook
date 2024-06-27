@@ -34,7 +34,7 @@
 					{% if user %}
 					Resultados encontrados para
 					{% else %}
-					Não foram encontrados para
+					Não foram encontrados resultados para
 					{% endif %}
 					<span class="span-texto-resultados">{{ user.cpf|default:search_input }}</span>
 				</h1>
@@ -97,7 +97,8 @@
 							<td class="tabela-texto">{{ loan.borrowed_date|date:"d/m/Y" }}</td>
 							<td class="tabela-texto">{{ loan.expected_return_date|date:"d/m/Y" }}</td>
 							<td>
-								<a href="{% url 'return_book_id' id=loan.id %}" class="botao-devolucao text-white text-decoration-none">
+								<a href="{% url 'return_book_id' id=loan.id %}"
+									class="botao-devolucao text-white text-decoration-none">
 									Devolver
 								</a>
 							</td>
@@ -160,6 +161,94 @@
 			{% endif %}
 		</section>
 	</main>
+
+	<!-- Modal Novo empréstimo -->
+	<div class="modal fade" id="modalNovoEmprestimo" data-bs-backdrop="static" tabindex="-1"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered modal-lg">
+			<div class="modal-content border-0 p-2">
+				<div class="modal-header border-0">
+					<h1 class="modal-title modal-titulo" id="exampleModalLabel" style="font-size: 1.1rem !important;">
+						Novo empréstimo
+					</h1>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+
+					<div class="tabela-leitor-info">
+						<h2 class="leitor-texto" style="font-size: 0.95rem;">{{ user.first_name }} {{ user.last_name }}
+						</h2>
+						<h2 class="leitor-texto" style="font-size: 0.95rem;">{{ user.cpf }}</h2>
+						<h2 class="leitor-texto" style="font-size: 0.95rem;">{{ user.email }}</h2>
+					</div>
+
+					<div class="pesquisa-exemplar container-pesq">
+						<div class="data-exemplar m-auto ps-3" style="width: 60%;">
+							<h2 class="pesquisa-texto p-0 m-0">Exemplar</h2>
+							<select id="pesquisa-exemplar-select" class="form-select form-select-md m-0 p-2">
+								<option value="0" label="Selecione o livro para empréstimo"></option>
+								{% for book_copy in available_copies %}
+								<option value="{{ book_copy.book.id }}">{{ book_copy.book.name }}</option>
+								{% endfor %}
+							</select>
+						</div>
+
+						<div class="data-exemplar m-auto" style="width: 35%;">
+							<h2 class="pesquisa-texto p-0 m-0">Empréstimo</h2>
+							<input id="pesquisa-exemplar-data" type="date" class="data-input me-3" />
+						</div>
+
+					</div>
+
+				</div>
+				<div class="modal-footer border-0">
+					<button id="botao-registra-emprestimo" class="btn modal-botao" style="background-color: #1F9C51;">
+						Registrar empréstimo
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
+
+<script>
+	const botaoRegistraEmprestimo = document.querySelector("#botao-registra-emprestimo");
+	const modalNovoEmprestimoEl = document.querySelector("#modalNovoEmprestimo");
+	const pesquisaExemplarSelect = document.querySelector("#pesquisa-exemplar-select");
+	const pesquisaExemplarData = document.querySelector("#pesquisa-exemplar-data");
+
+	const modalNovoEmprestimo = new bootstrap.Modal("#modalNovoEmprestimo");
+
+	botaoRegistraEmprestimo.addEventListener("click", async () => {
+		const bookId = pesquisaExemplarSelect.value;
+
+		if (bookId == 0) {
+			return true;
+		}
+
+		const response = await fetch("/add_loan", {
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify({
+				"book_id": bookId,
+				"borrowed_date": pesquisaExemplarData.value,
+				"borrower_id": "{{ user.cpf }}",
+			})
+		});
+
+		modalNovoEmprestimo.hide();
+	}, false);
+
+	modalNovoEmprestimoEl.addEventListener("show.bs.modal", (e) => {
+		const todayDate = new Date();
+		const formattedDate = todayDate.toISOString().slice(0, 10);
+
+		pesquisaExemplarData.value = formattedDate;
+	});
+
+	modalNovoEmprestimoEl.addEventListener("hidden.bs.modal", (e) => {
+		location.reload();
+	});
+</script>
 
 </html>

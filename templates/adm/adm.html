@@ -75,10 +75,6 @@
 								>
 									Validade
 								</th>
-								<th
-									scope="col"
-									class="tabela-titulo tabela-editar"
-								></th>
 							</tr>
 						</thead>
 						<tbody class="table-group-divider">
@@ -99,11 +95,6 @@
 								<td class="tabela-texto">{{ loan.book_copy.book.author }}</td>
 								<td class="tabela-texto">{{ loan.borrowed_date|date:"d/m/Y" }}</td>
 								<td class="tabela-texto">{{ loan.expected_return_date|date:"d/m/Y" }}</td>
-								<td>
-									<a href="">
-										{% icon 'edit' class='edit-icon' %}
-									</a>
-								</td>
 							</tr>
 							{% endfor %}
 						</tbody>
@@ -155,10 +146,6 @@
 								>
 									Devolução
 								</th>
-								<th
-									scope="col"
-									class="tabela-titulo tabela-editar"
-								></th>
 							</tr>
 						</thead>
 						<tbody class="table-group-divider">
@@ -171,7 +158,7 @@
 									{{ loan.id }}
 								</td>
 								<td class="tabela-texto">
-									{{ loan.borrower }}
+									{{ loan.borrower.first_name }} {{ loan.borrower.last_name }}
 								</td>
 								<td class="tabela-texto">
 									{{ loan.book_copy.book.name }}
@@ -179,14 +166,6 @@
 								<td class="tabela-texto">{{ loan.book_copy.book.author }}</td>
 								<td class="tabela-texto">{{ loan.borrowed_date|date:"d/m/Y" }}</td>
 								<td class="tabela-texto">{{ loan.return_date|date:"d/m/Y" }}</td>
-								<td>
-									<a href="">
-										<ion-icon
-											name="create-outline"
-											class="edit-icon"
-										></ion-icon>
-									</a>
-								</td>
 							</tr>
 							{% endfor %}
 						</tbody>

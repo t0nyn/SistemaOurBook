@@ -35,14 +35,24 @@ def search_user_loans(request):
         except OurBookUser.DoesNotExist:
             user = None
 
-        loans = Loan.objects.filter(return_date__isnull=True, borrower=user)
-        past_loans = Loan.objects.filter(return_date__isnull=False, borrower=user)
+        loans = Loan.objects.filter(return_date__isnull=True, borrower=user).order_by('-borrowed_date')
+        past_loans = Loan.objects.filter(return_date__isnull=False, borrower=user).order_by('-return_date')
+
+        available_copies = BookCopy.objects.filter(current_status="AVAILABLE")
+        unique_books = set()
+        unique_available_copies = []
+
+        for copy in available_copies:
+            if copy.book not in unique_books:
+                unique_available_copies.append(copy)
+                unique_books.add(copy.book)
 
         context = {
             "user": user,
             "past_loans": past_loans,
             "loans": loans,
-            "search_input": search_input
+            "search_input": search_input,
+            "available_copies": unique_available_copies
         }
 
         return render(request, "adm/search_user_loans.html", context=context)
@@ -110,6 +120,7 @@ def add_loan(request):
         try:
             data = json.loads(request.body)
             book_id = data.get("book_id")
+            borrowed_date = data.get("borrowed_date")
             borrower_id = data.get("borrower_id")
 
             book = Book.objects.get(id=book_id)
@@ -128,7 +139,7 @@ def add_loan(request):
                     {"error": "Não existem exemplares disponíveis."}, status=400
                 )
 
-            loan = Loan.objects.create(book_copy=available_copy, borrower=borrower)
+            loan = Loan.objects.create(book_copy=available_copy, borrower=borrower, borrowed_date=borrowed_date)
             available_copy.current_status = "BORROWED"
             available_copy.save()
 

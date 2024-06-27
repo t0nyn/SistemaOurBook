@@ -150,7 +150,8 @@ main {
 }
 
 #search-filter-select {
-	max-width: 130px;
+	max-width: 135px;
+	background-color: #e9ecef;
 }
 
 /* CONTEUDO FORA DA TABELA */
@@ -200,7 +201,6 @@ main {
 	display: flex;
 	justify-content: flex-start;
 	gap: 2rem;
-	width: 70%;
 }
 
 .leitor-texto {
@@ -302,4 +302,89 @@ main {
 	width: 32px;
 	color: black;
 	padding-right: 1rem;
+}
+
+
+/* MODAL NOVO EMPRÉSTIMO */
+
+.modal-titulo {
+	font-weight: 500 !important;
+	font-size: 1.15rem !important;
+	font-family: "Poppins", sans-serif !important;
+	color: #000 !important;
+	padding: 0 !important;
+}
+
+.modal-body {
+	display: flex;
+	flex-direction: column;
+	justify-content: center !important;
+}
+
+.pesquisa-exemplar {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.data-exemplar .form-select {
+	width: 70% !important;
+}
+
+.data-exemplar {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: flex-start;
+	gap: 1rem;
+}
+
+.data-input {
+	padding: 0.5rem;
+	border-radius: 5px;
+	border-width: 1px;
+	border-color: #4242422c;
+	border-style: solid;
+}
+
+.pesquisa-texto {
+	text-align: left;
+	font-weight: 500;
+	font-size: 1rem;
+	font-family: "Poppins", sans-serif;
+	color: #000;
+}
+
+.modal-texto {
+	text-align: justify;
+	font-weight: 400;
+	font-size: 0.9rem;
+	font-family: "Poppins", sans-serif;
+	color: #000000e7;
+	padding: 0 !important;
+}
+
+.modal-footer {
+	gap: 1rem;
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+}
+
+.modal-botao {
+	width: 35%;
+	border-radius: 4px !important;
+	color: #fff !important;
+	padding: 0.6rem !important;
+	font-size: 0.95rem !important;
+}
+
+.container-pesq{
+	margin-top: 0.8rem;
+	margin-bottom: 1.5rem;
+	margin-left: -1.5rem;
+	margin-right: -1.5rem;
+	padding-top: 1.5rem; 
+	border-top: #00000049 1px solid; 
 }
