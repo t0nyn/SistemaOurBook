@@ -7,7 +7,7 @@ from django.db.models import Q
 from django.http import JsonResponse
 from django.forms.models import model_to_dict
 from django.views.decorators.csrf import csrf_exempt
-from datetime import timedelta
+from datetime import timedelta, datetime
 from django.utils import timezone
 
 from user.models import OurBookUser
@@ -138,8 +138,16 @@ def add_loan(request):
                 return JsonResponse(
                     {"error": "Não existem exemplares disponíveis."}, status=400
                 )
+            
+            borrowed_datetime = timezone.make_aware(datetime.strptime(borrowed_date, "%Y-%m-%d"), timezone.get_current_timezone())
 
-            loan = Loan.objects.create(book_copy=available_copy, borrower=borrower, borrowed_date=borrowed_date)
+            loan = Loan.objects.create(
+                book_copy=available_copy,
+                borrower=borrower,
+                borrowed_date=borrowed_date,
+                expected_return_date=borrowed_datetime + timedelta(days=15)
+            )
+            
             available_copy.current_status = "BORROWED"
             available_copy.save()
 
