@@ -1,0 +1,104 @@
+{% extends "base/index.html" %}
+{% load static %}
+{% load icon %}
+{% block title %} {{ book.name }} {% endblock %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/book/style.css' %}" />
+{% endblock %}
+{% block content %}
+
+{% include 'components/navbar.html' %}
+
+<main>
+  <section class="container-exemplar">
+    <div class="conteudo-exemplar">
+      <div class="container-img">
+        <img src="{{ book.cover.url }}" class="exemplar-conteudo-img" />
+      </div>
+      <div class="exemplar-atributos">
+        <div class="container-info">
+          <h1 class="titulo-exemplar">{{ book.name }}</h1>
+
+          <table class="table table-borderless tabela-info">
+            <thead></thead>
+            <tbody>
+              <tr>
+                <td class="span-exemplar">Autor</td>
+                <td class="texto-exemplar">{{ book.author }}</td>
+              </tr>
+
+              <tr>
+                <td class="span-exemplar">Editora</td>
+                <td class="texto-exemplar">{{ book.publisher }}</td>
+              </tr>
+
+              <tr>
+                <td class="span-exemplar">Edição</td>
+                <td class="texto-exemplar">{{ book.edition }}</td>
+              </tr>
+
+              <tr>
+                <td class="span-exemplar">Ano</td>
+                <td class="texto-exemplar">{{ book.year }}</td>
+              </tr>
+
+              <tr>
+                <td class="span-exemplar">Páginas</td>
+                <td class="texto-exemplar">{{ book.num_pages }}</td>
+              </tr>
+            </tbody>
+          </table>
+          {% if book.copy_count != 0 %}
+          <h1 class="exemplar-disponibilidade">{{ book.copy_count }}
+            {% if book.copy_count > 1 %} exemplares disponíveis {%else %} exemplar disponível {% endif %}
+          </h1>
+          {% else %}
+          <h1 class="exemplar-disponibilidade">Nenhum exemplar disponível</h1>
+          {% endif %}
+        </div>
+
+        <div>
+          <button class="botao-adicionar-lista">
+            {% icon 'star' %}
+            Adicionar à lista
+          </button>
+        </div>
+      </div>
+      <div class="container-compartilhar">
+        <button class="share-icon">
+          {% icon 'share-2' %}
+        </button>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <h1 class="descricao-titulo">Descrição</h1>
+        <p class="descricao-texto">{{ book.description }}</p>
+      </div>
+
+      <div>
+        <h1 class="descricao-titulo">Categoria</h1>
+        <p class="descricao-texto">
+          {% for category in book.categories.all %}
+          {{ category }}{% if not forloop.last %}, {% endif %}
+          {% endfor %}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="conteudo-similares">
+    <div class="container">
+      <h1 class="similares-texto">Veja mais livros da mesma categoria</h1>
+
+      <div class="container-exemplares">
+        {% for book in same_category_books %}
+        {% include 'components/linux.html' %}
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+</main>
+
+{% endblock %}

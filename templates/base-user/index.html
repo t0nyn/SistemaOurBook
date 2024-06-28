@@ -1,0 +1,21 @@
+{% load static %}
+{% load icon %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{% block title %}{% endblock %}</title>
+  {% load bootstrap5 %}
+  {% bootstrap_css %}
+  {% bootstrap_javascript %}
+  <link rel="icon" type="image/x-icon" href="{% static 'images/book.ico' %}">
+  <link rel="stylesheet" href="{% static 'css/base-user/style.css' %}">
+  {% block css %}{% endblock %}
+</head>
+<body>
+   
+    {% block content %}
+    {% endblock %}
+    
+    {% block script %}
+    {% endblock %}
+</body>

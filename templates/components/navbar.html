@@ -1,0 +1,66 @@
+{% load static %}
+{% load icon %}
+<div class="menu-navegacao">
+    <a class="menu-logo">
+      <img src="{% static '/images/Logo-transparente.png' %}" class="menu-logo--img" />
+    </a>
+    <nav>
+      <ul class="menu-nav mb-0">
+        <div class="menu-nav-list">
+          <li>
+            <a class="{% if 'home' in request.path %}nav-item-active{% endif %} nav-item-inactive" href="{% url 'home' %}">Início</a>
+          </li>
+          <li>
+            <a class="{% if 'kleber' in request.path %}nav-item-active{% endif %} nav-item-inactive" href="#">Categorias</a>
+          </li>
+          <li>
+            <a class="{% if 'kleber' in request.path %}nav-item-active{% endif %} nav-item-inactive" href="#">Recentes</a>
+          </li>
+          <li>
+            <a class="{% if 'kleber' in request.path %}nav-item-active{% endif %} nav-item-inactive" href="#">Acervo Geral</a>
+          </li>
+          <li>
+            <a class="{% if 'loans' in request.path %}nav-item-active{% endif %} nav-item-inactive" href="{% url 'loans' %}">Empréstimo</a>
+          </li>
+          <a href="#" class="nav-item-inactive">
+            {% icon "search" %}
+          </a>
+        </div>
+
+        <li class="container-dropdown">
+          <div class="dropdown">
+            <button class="btn btn-secondary button-account" type="button" id="dropdownMenuButton"
+              data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {{request.user.username}}
+              {% icon 'chevron-down' %}
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item dropdown-item--primeiro" href="#">
+                {% icon 'star' %}
+                Minha lista
+              </a>
+              <a class="dropdown-item" href="{% url 'loans' %}">
+                {% icon 'book-open' %}
+                Empréstimos
+              </a>
+              <a class="dropdown-item" href="#">
+                {% icon 'calendar' %}
+                Reservas
+              </a>
+              <a class="dropdown-item" href="#">
+                {% icon 'settings' %}
+                Configurações
+              </a>
+              <a class="dropdown-item dropdown-item--ultimo" href="{% url 'logout' %}">
+                {% icon 'log-out' %}
+                Sair da conta
+              </a>
+            </div>
+          </div>
+
+        </li>
+
+      </ul>
+
+    </nav>
+  </div>

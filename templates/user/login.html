@@ -1,0 +1,72 @@
+{% extends "base/index.html" %} 
+{% load static %} 
+{% block title %} Login {% endblock %} 
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/user/style.css' %}" />
+{% endblock %}
+{% block content %}
+<main>
+  <div class="container mt-5 mb-5 pt-3 pb-3">
+    <div class="col-10 offset-1">
+        <div class="main mb-4">
+          <div class="row">
+            <div class="col-12 col-md-4 mx-auto create-acc-logo">
+              <img
+                src="{% static 'images/Logo-transparente.png' %}"
+                alt="logo"
+                width="160"
+                height="120"
+              />
+              <div class="create-acc">
+                <p class="pb-0 mb-0">
+                  <b>Entrar na conta</b><br />Não tem uma conta?
+                  <a href="{% url 'register' %}">Criar conta</a>
+                </p>
+              </div>
+            </div>
+            <div class="col-12 col-md-4 mx-auto">
+              <form method="POST">
+                {% csrf_token %}
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label"
+                    >Usuário</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control login-form-input"
+                    placeholder="Digite seu usuário"
+                    id="exampleInputEmail1"
+                    name="username"
+                    aria-describedby="emailHelp"
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label"
+                    >Senha</label
+                  >
+                  <input
+                    type="password"
+                    class="form-control login-form-input"
+                    name="password"
+                    placeholder="Digite sua senha"
+                    id="exampleInputPassword1"
+                    required
+                  />
+                  <a href="#">Esqueceu a senha?</a>
+                </div>
+                <button type="submit" class="btn btn-primary">Entrar</button>
+              </form>
+              {% if login_fail %}
+              <div class="alert alert-danger" role="alert">
+                Usuário ou senha inválidos.
+              </div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</main>
+{% endblock %}
+

@@ -1,0 +1,282 @@
+{% extends "base/index.html" %}
+{% load static %}
+{% load icon %}
+{% block title %}Meus Empréstimos{% endblock %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/loans/style.css' %}" />
+{% endblock %}
+{% block content %}
+
+{% include 'components/navbar.html' %}
+
+<main>
+
+    <header>
+        <h1 class="header-titulo">Meus empréstimos</h1>
+    </header>
+
+    <section class="container-emprestimos">
+
+        <div class="emprestimos-vigentes">
+
+            <h1 class="emprestimos-titulo">Empréstimos vigentes</h1>
+
+            {% for loan in loans %}
+            <div class="conteudo-exemplar">
+
+                <div class="container-exemplar">
+                    <div class="container-img">
+                        <img src="{{ loan.book_copy.book.cover.url }}" onerror="imgError(this)" class="exemplar-img">
+                    </div>
+                    <div class="exemplar-atributos">
+                        <div class="container-info">
+                            <h1 class="titulo-exemplar">{{ loan.book_copy.book.name }}</h1>
+
+                            <table class="table table-borderless tabela-info">
+                                <tbody>
+                                    <tr>
+                                        <td class="span-exemplar">Autor</td>
+                                        <td class="texto-exemplar">{{ loan.book_copy.book.author }}</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="span-exemplar">Editora</td>
+                                        <td class="texto-exemplar">{{ loan.book_copy.book.publisher }}</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="span-exemplar">Edição</td>
+                                        <td class="texto-exemplar">{{ loan.book_copy.book.edition }}</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="span-exemplar">Ano</td>
+                                        <td class="texto-exemplar">{{ loan.book_copy.book.year }}</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="span-exemplar">Páginas</td>
+                                        <td class="texto-exemplar">{{ loan.book_copy.book.num_pages }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                        <div>
+                            <h2 class="texto-emprestimo mb-1">Emprestado em: {{ loan.borrowed_date|date:"d/m/Y" }}</h2>
+                            <h2 id="texto-devolucao-{{ loan.id }}" class="texto-devolucao" style="color: #1F9C51;">Devolver até: {{ loan.expected_return_date|date:"d/m/Y" }}</h2>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="container-botao">
+                    <div id="container-renovacao-datas-{{ loan.id }}">
+                        {% for renovation in loan.renovations.all %}
+                            <h1 class="renovacao-texto mb-1">Renovado em {{ renovation.renovation_date|date:"d/m/Y" }}</h1>
+                        {% endfor %}
+                    </div>
+
+                    <button class="exemplar-botao" data-loan-id="{{ loan.id }}" data-bs-toggle="modal" data-bs-target="#modalRenovacao">
+                        Solicitar renovação
+                    </button>
+
+                </div>
+
+            </div>
+            {% endfor %}
+
+            {% if loans.count == 0 %}
+            <p style="color: #00000073;">Não há empréstimos vigentes.</p>
+            {% endif %}
+        </div>
+
+        <div class="historico-emprestimos">
+
+            <h1 class="emprestimos-titulo">Histórico de empréstimos</h1>
+
+            {% for loan in past_loans %}
+            <div class="conteudo-exemplar">
+
+                <div class="container-exemplar">
+                    <div class="container-img">
+                        <img src="{{ loan.book_copy.book.cover.url }}" onerror="imgError(this)" class="exemplar-img">
+                    </div>
+                    <div class="exemplar-atributos">
+                        <div class="container-info">
+                            <h1 class="titulo-exemplar">{{ loan.book_copy.book.name }}</h1>
+
+                            <table class="table table-borderless tabela-info">
+                                <tbody>
+                                    <tr>
+                                        <td class="span-exemplar">Autor</td>
+                                        <td class="texto-exemplar">{{ loan.book_copy.book.author }}</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="span-exemplar">Editora</td>
+                                        <td class="texto-exemplar">{{ loan.book_copy.book.publisher }}</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="span-exemplar">Edição</td>
+                                        <td class="texto-exemplar">{{ loan.book_copy.book.edition }}</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="span-exemplar">Ano</td>
+                                        <td class="texto-exemplar">{{ loan.book_copy.book.year }}</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="span-exemplar">Páginas</td>
+                                        <td class="texto-exemplar">{{ loan.book_copy.book.num_pages }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                        <div>
+                            <h2 class="texto-emprestimo mb-1">Emprestado em: {{ loan.borrowed_date|date:"d/m/Y" }}</h2>
+                            <h2 class="texto-devolucao" style="font-weight: 400;">Devolvido em: {{ loan.return_date|date:"d/m/Y" }}</h2>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            {% endfor %}
+
+            {% if past_loans.count == 0 %}
+            <p style="color: #00000073;">Você ainda não realizou devolução.</p>
+            {% endif %}
+        </div>
+
+
+    </section>
+
+</main>
+
+<!-- Modal Solicita renovação de empréstimo -->
+<div class="modal fade" id="modalRenovacao" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0">
+            <div class="modal-header border-0">
+                <h1 class="modal-title modal-titulo m-auto" id="exampleModalLabel">Solicitar renovação deste exemplar?</h1>
+            </div>
+            <div class="modal-body">
+                <img src="{% static '/images/modal-calendar.png' %}" class="modal-img">
+                <p class="modal-texto">
+                    Ainda não finalizou sua leitura? Não se preocupe, você pode renovar sua reserva por mais 15 dias! Lembre-se, só é possível renovar seu empréstimo por, no máximo, 2 vezes.
+                </p>
+            </div>
+            <div class="modal-footer modal-renovacao border-0">
+                <button type="button" class="btn modal-botao" data-bs-dismiss="modal"
+                    style="background-color: #DE0B0B">Cancelar</button>
+                <button id="botao-solicitar-renovacao" type="button" class="btn modal-botao"
+                    style="background-color: #1F9C51;" data-bs-dismiss="modal">Solicitar renovação</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Confirma renovação de empréstimo -->
+<div class="modal fade" id="modalConfirma" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0">
+            <div class="modal-header border-0">
+                <h1 class="modal-title modal-titulo m-auto" id="exampleModalLabel">Renovação realizada!</h1>
+            </div>
+            <div class="modal-body">
+                <img src="{% static '/images/modal-confirma.png' %}" class="modal-img" style="width: 300px;">
+                <p class="modal-texto">
+                    Sua renovação foi realizada com sucesso! Você pode visualizar a nova data de devolução do seu empréstimo em “Meus empréstimos”.
+                </p>
+            </div>
+            <div class="modal-footer modal-renovacao border-0">
+                <button type="button" class="btn modal-botao" data-bs-dismiss="modal" style="background-color: #DE0B0B">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Rejeita renovação de empréstimo -->
+<div class="modal fade" id="modalRejeita" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0">
+            <div class="modal-header border-0">
+                <h1 class="modal-title modal-titulo m-auto" id="exampleModalLabel">Renovação Rejeitada!</h1>
+            </div>
+            <div class="modal-body">
+                <img src="{% static '/images/modal-rejeita.png' %}" class="modal-img" style="width: 220px; height: 155px;">
+                <p id="texto-rejeicao-emprestimo" class="modal-texto mt-4">
+                    Não foi possível realizar a renovação.
+                </p>
+            </div>
+            <div class="modal-footer modal-renovacao border-0">
+                <button type="button" class="btn modal-botao" data-bs-dismiss="modal" style="background-color: #DE0B0B">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    const exemplarBotoes = document.querySelectorAll(".exemplar-botao");
+    const solicitarRenovacaoBotao = document.querySelector("#botao-solicitar-renovacao");
+    const textoRejeicaoEmprestimoEl = document.querySelector("#texto-rejeicao-emprestimo");
+
+    const modalConfirma = new bootstrap.Modal("#modalConfirma");
+    const modalRejeita = new bootstrap.Modal("#modalRejeita");
+
+    let loanId = null;
+
+    exemplarBotoes.forEach((exemplarBotao) => {
+        exemplarBotao.addEventListener("click", () => {
+            loanId = exemplarBotao.getAttribute("data-loan-id");
+        }, false);
+    });
+
+    solicitarRenovacaoBotao.addEventListener("click", async () => {
+        const response = await fetch("/add_renovation", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ "loan_id": loanId })
+        });
+
+        const content = await response.json();
+
+        loanId = null;
+
+        if (response.ok) {
+            const expectedReturnDateEl = document.querySelector(`#texto-devolucao-${content.loan_id}`);
+            const containerRenovacaoDatasEl = document.querySelector(`#container-renovacao-datas-${content.loan_id}`);
+
+            let newReturnDate = new Date(content.expected_return_date).toLocaleDateString();
+            let newRenovationDate = getLocaleUTCDateString(new Date(content.renovation_date));
+
+            expectedReturnDateEl.textContent = `Devolver até: ${newReturnDate}`;
+            containerRenovacaoDatasEl.innerHTML += `<h1 class="renovacao-texto mb-1">Renovado em ${newRenovationDate}</h1>`;
+
+            return modalConfirma.show();
+        }
+
+        textoRejeicaoEmprestimoEl.textContent = content.error;
+
+        modalRejeita.show();
+    }, false);
+
+    function getLocaleUTCDateString(date) {
+        const timeDiff = date.getTimezoneOffset() * 60000;
+
+        return new Date(date.valueOf() + timeDiff).toLocaleDateString();
+    }
+
+    function imgError(image) {
+        image.onerror = "";
+        image.src = "{% static 'images/books/placeholder-img.png' %}";
+
+        return true;
+    }
+</script>
+
+{% endblock %}

@@ -1,0 +1,112 @@
+{% extends "base/index.html" %} 
+{% load static %} 
+{% block title %}Register{% endblock %} {% block css %}
+<link rel="stylesheet" href="{% static 'css/user/style.css' %}" />
+{% endblock %} {% block content %}
+
+<main>
+  <div class="container mt-5 mb-5 pt-3 pb-3">
+    <div class="row">
+      <div class="col-10 offset-1">
+        <div class="main mb-4">
+          <div class="row">
+            <div class="col-12 col-md-4 mx-auto me-0 create-acc-logo">
+              <img
+                src="{% static 'images/Logo-transparente.png' %}"
+                alt="logo"
+                width="160"
+                height="120"
+              />
+              <div class="create-acc">
+                <p class="pb-0 mb-0">
+                  <b>Criar uma conta</b><br />Já tem uma conta?
+                  <a href="{% url 'login' %}">login</a>
+                </p>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 mx-auto">
+              <form method="POST">
+                {% csrf_token %}
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <label for="user" class="form-label"
+                    >Usuário</label
+                    >
+                    <input
+                    type="text"
+                    class="form-control login-form-input"
+                    placeholder="Defina seu usuário"
+                    id="user"
+                    name="username"
+                    aria-describedby="emailHelp"
+                    required
+                    />
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label for="cpf" class="form-label"
+                    >E-mail</label
+                    >
+                    <input
+                    type="email"
+                    class="form-control login-form-input"
+                    placeholder="Informe seu e-mail"
+                    id="email"
+                    name="email"
+                    aria-describedby="emailHelp"
+                    required
+                    />
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label for="cpf" class="form-label"
+                    >CPF</label
+                    >
+                    <input
+                    type="text"
+                    class="form-control login-form-input"
+                    placeholder="Informe seu CPF"
+                    maxlength="14"
+                    oninput="mascaraCPF(this)"
+                    id="cpf"
+                    name="cpf"
+                    aria-describedby="emailHelp"
+                    required
+                    />
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label for="password" class="form-label"
+                    >Senha</label
+                    >
+                    <input
+                    type="password"
+                    class="form-control login-form-input"
+                    name="password"
+                    placeholder="Defina sua senha"
+                    id="password"
+                    required
+                    />
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-primary mt-2">
+                  Criar Conta
+                </button>
+                </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock %}
+
+{% block script %}
+<script>
+  function mascaraCPF(cpf) {
+    cpf.value = cpf.value
+        .replace(/\D/g, '') 
+        .replace(/(\d{3})(\d)/, '$1.$2')
+        .replace(/(\d{3})(\d)/, '$1.$2')
+        .replace(/(\d{3})(\d{1,2})$/, '$1-$2'); 
+}
+</script>
+{% endblock %}

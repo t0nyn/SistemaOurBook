@@ -1,0 +1,159 @@
+{% load static %}
+{% load icon %}
+
+<menu id="sidebar" class="d-flex flex-column bg-white">
+	<div class="d-flex flex-column align-items-center mt-5 mb-4">
+		<a href="{% url 'home' %}">
+			<img id="sidebar-logo" src="{% static '/images/Logo-transparente.png' %}" />
+		</a>
+
+		<div class="dropdown mt-4">
+			<button class="btn button-account d-flex align-items-center justify-content-center" type="button"
+				id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				Biblioteca
+				{% icon 'chevron-down' class='chevron-icon collapse-chevron' %}
+			</button>
+			<ul id="dropdown-menu-logout" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+				<a class="dropdown-item" href="{% url 'logout' %}">
+					{% icon 'log-out' class='account-icon' %}
+					Sair da conta
+				</a>
+			</ul>
+		</div>
+	</div>
+
+	<ul class="list-unstyled">
+		<li class="border-top border-secondary-subtle pb-1">
+			<button
+				class="sidebar-collapse-button w-100 d-flex align-items-center justify-content-between bg-white pt-3 pb-2 ps-4 pe-5 border-0 collapsed"
+				data-bs-toggle="collapse" data-bs-target="#exemplar-collapse" aria-expanded="false">
+				<div class="sidebar-collapse-text d-flex align-items-center gap-2">
+					{% icon 'book' class='sidebar-icon' %}
+					Exemplar
+				</div>
+				{% icon 'chevron-down' class='chevron-icon collapse-chevron' %}
+			</button>
+			<div id="exemplar-collapse" class="ms-4 collapse">
+				<ul class="list-unstyled ps-4 border-start border-2 border-dark">
+					<li>
+						<a href="/" class="collapsed-item-text text-reset text-decoration-none">
+							Cadastrar exemplar
+						</a>
+					</li>
+					<li>
+						<a href="/" class="collapsed-item-text text-reset text-decoration-none">
+							Cadastrar autor
+						</a>
+					</li>
+					<li class="mb-4">
+						<a href="/" class="collapsed-item-text text-reset text-decoration-none">
+							Cadastrar editora
+						</a>
+					</li>
+				</ul>
+			</div>
+		</li>
+
+		<li class="border-top border-secondary-subtle pt-3 pb-1">
+			<button
+				class="sidebar-collapse-button w-100 d-flex align-items-center justify-content-between bg-white pb-2 ps-4 pe-5 border-0 collapsed"
+				data-bs-toggle="collapse" data-bs-target="#leitor-collapse" aria-expanded="false">
+				<div class="sidebar-collapse-text d-flex align-items-center gap-2">
+					{% icon 'user' class='sidebar-icon' %}
+					Leitor
+				</div>
+				{% icon 'chevron-down' class='chevron-icon collapse-chevron' %}
+			</button>
+			<div id="leitor-collapse" class="ms-4 collapse">
+				<ul class="list-unstyled ps-4 border-start border-2 border-dark">
+					<li>
+						<a href="/" class="collapsed-item-text text-reset text-decoration-none">
+							Registrar empréstimo
+						</a>
+					</li>
+					<li class="mb-4">
+						<a href="/" class="collapsed-item-text text-reset text-decoration-none">
+							Registrar devolução
+						</a>
+					</li>
+				</ul>
+			</div>
+		</li>
+
+		<li class="border-top border-bottom border-secondary-subtle pb-1">
+			<button
+				class="sidebar-collapse-button w-100 d-flex align-items-center justify-content-between bg-white pt-3 pb-2 ps-4 pe-5 border-0 collapsed">
+				<div class="sidebar-collapse-text d-flex align-items-center gap-2">
+					{% icon 'refresh-ccw' class='sidebar-icon' %}
+					Empréstimo
+				</div>
+				{% icon 'chevron-down' class='chevron-icon collapse-chevron' %}
+			</button>
+		</li>
+	</ul>
+
+	<div class="mt-auto ms-4">
+		<ul class="list-unstyled">
+			<li>
+				<a href="/" class="terms-links text-reset">
+					Política de privacidade
+				</a>
+			</li>
+			<li>
+				<a href="/" class="terms-links text-reset">
+					Política de Cookies
+				</a>
+			</li>
+			<li>
+				<a href="/" class="terms-links text-reset">
+					Termos e Condições
+				</a>
+			</li>
+			<li>
+				<a href="/" class="terms-links text-reset">Suporte</a>
+			</li>
+		</ul>
+		<ul class="list-unstyled">
+			<li class="rights-text">© 2024 Ourbook.</li>
+			<li class="rights-text">Todos direitos reservados</li>
+		</ul>
+	</div>
+</menu>
+
+<script>
+	const sidebarCollapsible = document.querySelectorAll("li > .collapse");
+
+	sidebarCollapsible.forEach((collapsible) => {
+		const liParent = collapsible.parentElement;
+		const collapseBtn = liParent.querySelector(".sidebar-collapse-button");
+		const collapseChevron = collapseBtn.querySelector(".collapse-chevron");
+
+		collapsible.addEventListener(
+			"show.bs.collapse",
+			() => {
+				liParent.classList.remove("bg-white");
+				liParent.classList.add("bg-collapsed-show");
+
+				collapseBtn.classList.remove("bg-white");
+				collapseBtn.classList.add("bg-collapsed-show");
+
+				collapseChevron.classList.add("rotate-180");
+			},
+			false
+		);
+
+		collapsible.addEventListener(
+			"hide.bs.collapse",
+			() => {
+				liParent.classList.remove("bg-collapsed-show");
+				liParent.classList.add("bg-white");
+
+				collapseBtn.classList.remove("bg-collapsed-show");
+				collapseBtn.classList.add("bg-white");
+
+				collapseChevron.classList.remove("rotate-180");
+			},
+			false
+		);
+	});
+</script>
