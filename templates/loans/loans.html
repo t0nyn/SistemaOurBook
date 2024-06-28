@@ -26,7 +26,7 @@
 
                 <div class="container-exemplar">
                     <div class="container-img">
-                        <img src="{{ loan.book_copy.book.cover.url }}" class="exemplar-img">
+                        <img src="{{ loan.book_copy.book.cover.url }}" onerror="imgError(this)" class="exemplar-img">
                     </div>
                     <div class="exemplar-atributos">
                         <div class="container-info">
@@ -100,7 +100,7 @@
 
                 <div class="container-exemplar">
                     <div class="container-img">
-                        <img src="{{ loan.book_copy.book.cover.url }}" class="exemplar-img">
+                        <img src="{{ loan.book_copy.book.cover.url }}" onerror="imgError(this)" class="exemplar-img">
                     </div>
                     <div class="exemplar-atributos">
                         <div class="container-info">
@@ -269,6 +269,13 @@
         const timeDiff = date.getTimezoneOffset() * 60000;
 
         return new Date(date.valueOf() + timeDiff).toLocaleDateString();
+    }
+
+    function imgError(image) {
+        image.onerror = "";
+        image.src = "{% static 'images/books/placeholder-img.png' %}";
+
+        return true;
     }
 </script>
 

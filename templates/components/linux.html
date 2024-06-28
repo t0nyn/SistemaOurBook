@@ -1,14 +1,28 @@
+{% load static %}
+
 <div class="exemplar">
-    <a href="{% url 'book_page' id=book.id %}">
-      <img src="{{ book.cover.url }}" class="exemplar-img">
-    </a>
-    <div class="exemplar-info">
+  <a href="{% url 'book_page' id=book.id %}">
+    <img src="{{ book.cover.url }}" onerror="imgError(this)" class="exemplar-img">
+  </a>
+  <div class="exemplar-info">
+    <a href="{% url 'book_page' id=book.id %}" class="text-reset">
       <h2 class="exemplar-titulo m-0">{{ book.name }}</h2>
-      <h3 class="exemplar-autor">{{ book.author }}</h3>
-      {% if book.copy_count != 0 %}
-      <h4 class="exemplar-disponibilidade">{{ book.copy_count }} {% if book.copy_count > 1 %} Exemplares disponíveis {% else %} Exemplar disponível {% endif %}</h4>
-      {% else %}
-      <h4 class="exemplar-disponibilidade text-wrap">Nenhum exemplar disponível</h4>
-      {% endif %}
-    </div>
+    </a>
+    <h3 class="exemplar-autor">{{ book.author }}</h3>
+    {% if book.copy_count != 0 %}
+    <h4 class="exemplar-disponibilidade">{{ book.copy_count }} {% if book.copy_count > 1 %} Exemplares disponíveis {%
+      else %} Exemplar disponível {% endif %}</h4>
+    {% else %}
+    <h4 class="exemplar-disponibilidade text-wrap">Nenhum exemplar disponível</h4>
+    {% endif %}
+  </div>
 </div>
+
+<script>
+  function imgError(image) {
+    image.onerror = "";
+    image.src = "{% static 'images/books/placeholder-img.png' %}";
+
+    return true;
+  }
+</script>
