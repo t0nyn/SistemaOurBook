@@ -16,8 +16,9 @@ def register(request):
         username = request.POST.get("username")
         password = request.POST.get("password")
         cpf = request.POST.get("cpf")
+        email = request.POST.get("email")
         user = OurBookUser.objects.create_user(
-            username=username, password=password, cpf=cpf
+            username=username, password=password, cpf=cpf, email=email
         )
         login_user(request, user)
         next_url = request.GET.get("next", "home")

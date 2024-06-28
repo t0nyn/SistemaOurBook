@@ -24,14 +24,15 @@
                 </p>
               </div>
             </div>
-            <div class="col-12 col-md-4 mx-auto">
+            <div class="col-12 col-md-6 mx-auto">
               <form method="POST">
                 {% csrf_token %}
-                <div class="mb-3">
-                  <label for="user" class="form-label"
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <label for="user" class="form-label"
                     >Usuário</label
-                  >
-                  <input
+                    >
+                    <input
                     type="text"
                     class="form-control"
                     placeholder="Defina seu usuário"
@@ -39,13 +40,28 @@
                     name="username"
                     aria-describedby="emailHelp"
                     required
-                  />
-                </div>
-                <div class="mb-3">
-                  <label for="cpf" class="form-label"
+                    />
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label for="cpf" class="form-label"
+                    >E-mail</label
+                    >
+                    <input
+                    type="email"
+                    class="form-control"
+                    placeholder="Informe seu e-mail"
+                    maxlength="14"
+                    id="email"
+                    name="email"
+                    aria-describedby="emailHelp"
+                    required
+                    />
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label for="cpf" class="form-label"
                     >CPF</label
-                  >
-                  <input
+                    >
+                    <input
                     type="text"
                     class="form-control"
                     placeholder="Informe seu CPF"
@@ -55,25 +71,26 @@
                     name="cpf"
                     aria-describedby="emailHelp"
                     required
-                  />
-                </div>
-                <div class="mb-3">
-                  <label for="password" class="form-label"
+                    />
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label for="password" class="form-label"
                     >Senha</label
-                  >
-                  <input
+                    >
+                    <input
                     type="password"
                     class="form-control"
                     name="password"
                     placeholder="Defina sua senha"
                     id="password"
                     required
-                  />
+                    />
+                  </div>
+                  <button type="submit" class="btn btn-primary mt-2">
+                    Criar Conta
+                  </button>
                 </div>
-                <button type="submit" class="btn btn-primary">
-                  Criar Conta
-                </button>
-              </form>
+                </form>
             </div>
           </div>
         </div>
