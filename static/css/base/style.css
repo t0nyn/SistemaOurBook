@@ -51,14 +51,9 @@ form label{
   color: #262626;
 }
 
-input[type="email"],
-textarea {
+.login-form-input {
   background-color: #f5f5f5;
-}
-
-input[type="password"],
-textarea {
-  background-color: #f5f5f5;
+  border-radius: 0.375rem;
 }
 
 .btn-primary {
