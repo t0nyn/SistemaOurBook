@@ -44,7 +44,7 @@
 			<section class="tabela">
 				<div class="pesquisa-leitor">
 					<div class="tabela-leitor-info">
-						<h2 class="leitor-texto">{{ user.first_name }} {{ user.last_name }}</h2>
+						<h2 class="leitor-texto">{{ user.username }}</h2>
 						<h2 class="leitor-texto">{{ user.cpf }}</h2>
 						<h2 class="leitor-texto">{{ user.email }}</h2>
 					</div>
@@ -88,7 +88,7 @@
 								{{ loan.id }}
 							</td>
 							<td class="tabela-texto">
-								{{ loan.borrower.first_name }} {{ loan.borrower.last_name }}
+								{{ loan.borrower.username }}
 							</td>
 							<td class="tabela-texto">
 								{{ loan.book_copy.book.name }}
@@ -142,7 +142,7 @@
 								{{ loan.id }}
 							</td>
 							<td class="tabela-texto">
-								{{ loan.borrower.first_name }} {{ loan.borrower.last_name }}
+								{{ loan.borrower.username }}
 							</td>
 							<td class="tabela-texto">
 								{{ loan.book_copy.book.name }}
@@ -176,8 +176,7 @@
 				<div class="modal-body">
 
 					<div class="tabela-leitor-info">
-						<h2 class="leitor-texto" style="font-size: 0.95rem;">{{ user.first_name }} {{ user.last_name }}
-						</h2>
+						<h2 class="leitor-texto" style="font-size: 0.95rem;">{{ user.username }}</h2>
 						<h2 class="leitor-texto" style="font-size: 0.95rem;">{{ user.cpf }}</h2>
 						<h2 class="leitor-texto" style="font-size: 0.95rem;">{{ user.email }}</h2>
 					</div>
