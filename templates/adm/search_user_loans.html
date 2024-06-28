@@ -239,8 +239,10 @@
 	}, false);
 
 	modalNovoEmprestimoEl.addEventListener("show.bs.modal", (e) => {
-		const todayDate = new Date();
-		const formattedDate = todayDate.toISOString().slice(0, 10);
+		const timeDiff = new Date().getTimezoneOffset() * 60000;
+
+		const todayDate = new Date() - timeDiff;
+		const formattedDate = new Date(todayDate).toISOString().slice(0, 10);
 
 		pesquisaExemplarData.value = formattedDate;
 	});

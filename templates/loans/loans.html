@@ -268,7 +268,7 @@
     function getLocaleUTCDateString(date) {
         const timeDiff = date.getTimezoneOffset() * 60000;
 
-        return new Date(date.valueOf() + timeDiff).toLocaleDateString();
+        return new Date(date.valueOf() - timeDiff).toLocaleDateString();
     }
 
     function imgError(image) {
