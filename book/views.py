@@ -37,13 +37,17 @@ def home(request):
 
 def book_page(request, id):
     book = Book.objects.get(id=id)
+
     same_category_books = Book.objects.exclude(id=id).filter(
         categories__in=book.categories.all()
     )
+
+    same_category_unique_books = {book.id: book for book in same_category_books}.values()
+
     context = {
         "book": book,
         "username": request.user,
-        "same_category_books": same_category_books,
+        "same_category_books": same_category_unique_books,
     }
     return render(request, "book/book.html", context=context)
 

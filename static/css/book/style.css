@@ -38,6 +38,12 @@ main {
     border-radius: 18px;
 }
 
+.exemplar-conteudo-img {
+    width: 220px;
+    height: auto;
+    border-radius: 18px;
+}
+
 .exemplar-atributos {
     width: 50%;
     display: flex;
@@ -288,5 +294,9 @@ span {
         width: 100%;
         height: auto;
         border-radius: 18px;
+    }
+
+    .exemplar-conteudo-img {
+        width: 150px;
     }
 }
