@@ -10,8 +10,9 @@
     </a>
     <h3 class="exemplar-autor mt-1">{{ book.author }}</h3>
     {% if book.copy_count != 0 %}
-    <h4 class="exemplar-disponibilidade">{{ book.copy_count }} {% if book.copy_count > 1 %} Exemplares disponíveis {%
-      else %} Exemplar disponível {% endif %}</h4>
+    <h4 class="exemplar-disponibilidade">{{ book.copy_count }}
+      {% if book.copy_count > 1 %} Exemplares disponíveis {%else %} Exemplar disponível {% endif %}
+    </h4>
     {% else %}
     <h4 class="exemplar-disponibilidade text-wrap">Nenhum exemplar disponível</h4>
     {% endif %}
