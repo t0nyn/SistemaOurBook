@@ -268,8 +268,10 @@ def add_renovation(request):
                     },
                     status=403,
                 )
+            
+            time_now = timezone.now().astimezone(timezone.get_current_timezone()).date()
 
-            if timezone.now().date != loan.expected_return_date:
+            if time_now != loan.expected_return_date:
                 return JsonResponse(
                     {
                         "error": "Só é possível renovar o empréstimo no último dia do prazo de devolução."

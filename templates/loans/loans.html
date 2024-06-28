@@ -251,7 +251,7 @@
             const expectedReturnDateEl = document.querySelector(`#texto-devolucao-${content.loan_id}`);
             const containerRenovacaoDatasEl = document.querySelector(`#container-renovacao-datas-${content.loan_id}`);
 
-            let newReturnDate = getLocaleUTCDateString(new Date(content.expected_return_date));
+            let newReturnDate = new Date(content.expected_return_date).toLocaleDateString();
             let newRenovationDate = getLocaleUTCDateString(new Date(content.renovation_date));
 
             expectedReturnDateEl.textContent = `Devolver até: ${newReturnDate}`;
@@ -268,7 +268,7 @@
     function getLocaleUTCDateString(date) {
         const timeDiff = date.getTimezoneOffset() * 60000;
 
-        return new Date(date.valueOf() - timeDiff).toLocaleDateString();
+        return new Date(date.valueOf() + timeDiff).toLocaleDateString();
     }
 
     function imgError(image) {
