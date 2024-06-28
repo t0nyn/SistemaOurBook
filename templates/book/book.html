@@ -48,8 +48,13 @@
               </tr>
             </tbody>
           </table>
-
-          <h1 class="exemplar-disponibilidade">{{ book.copy_count }} exemplares disponíveis</h1>
+          {% if book.copy_count != 0 %}
+          <h1 class="exemplar-disponibilidade">{{ book.copy_count }}
+            {% if book.copy_count > 1 %} exemplares disponíveis {%else %} exemplar disponível {% endif %}
+          </h1>
+          {% else %}
+          <h1 class="exemplar-disponibilidade">Nenhum exemplar disponível</h1>
+          {% endif %}
         </div>
 
         <div>
