@@ -74,7 +74,11 @@
 
       <div>
         <h1 class="descricao-titulo">Categoria</h1>
-        <p class="descricao-texto">{% for category in book.categories.all %}{{category}} {% endfor %}</p>
+        <p class="descricao-texto">
+          {% for category in book.categories.all %}
+          {{ category }}{% if not forloop.last %}, {% endif %}
+          {% endfor %}
+        </p>
       </div>
     </div>
   </section>
