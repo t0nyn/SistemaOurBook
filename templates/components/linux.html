@@ -8,7 +8,7 @@
     <a href="{% url 'book_page' id=book.id %}" class="text-reset">
       <h2 class="exemplar-titulo m-0">{{ book.name }}</h2>
     </a>
-    <h3 class="exemplar-autor">{{ book.author }}</h3>
+    <h3 class="exemplar-autor mt-1">{{ book.author }}</h3>
     {% if book.copy_count != 0 %}
     <h4 class="exemplar-disponibilidade">{{ book.copy_count }} {% if book.copy_count > 1 %} Exemplares disponíveis {%
       else %} Exemplar disponível {% endif %}</h4>

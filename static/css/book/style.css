@@ -33,10 +33,9 @@ main {
 }
 
 .exemplar-img {
-    width: 220px;
-    height: 320px;
-    border-radius: 10px;
-    margin-right: 1rem;
+    width: 100%;
+    height: auto;
+    border-radius: 18px;
 }
 
 .exemplar-atributos {
@@ -82,11 +81,11 @@ main {
 }
 
 .exemplar-disponibilidade {
-    font-weight: 500;
-    font-size: 16px;
+    margin-top: 1rem;
     font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-size: 14px;
     color: #3465E1;
-    padding-top: 1.5rem;
 }
 
 .botao-adicionar-lista {
@@ -150,7 +149,7 @@ main {
     width: 100%;
     margin-top: 1rem;
     margin-bottom: 1rem;
-    justify-content: space-between;
+    gap: 1rem;
 }
 
 .exemplar {
@@ -161,6 +160,11 @@ main {
     padding-top: 0.5rem;
     background-color: #FFF;
     align-items: center;
+    padding: .8rem;
+}  
+
+.exemplar a {
+    width: 100%;
 }
 
 .exemplar-similar-img {
@@ -169,8 +173,8 @@ main {
 }
 
 .exemplar-info {
-    margin-top: 0.5rem;
-    padding: 1rem;
+    margin-top: 1.5rem;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -281,8 +285,8 @@ span {
     }
 
     .exemplar-img {
-        width: 150px;
-        height: 200px;
+        width: 100%;
+        height: auto;
         border-radius: 18px;
     }
 }
